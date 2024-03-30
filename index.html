@@ -14,18 +14,16 @@
         <div class="text-center">
           <img src="assets/images/icon.png" alt="Logo">
           <h2>Pesquisa OSINT</h2>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="name" placeholder="Insira o nome ou CPF" autocomplete="on" maxlength="100" autofocus required>
+          <div class="input-group">
+            <span class="input-group-text" for="name">Nome:</span>
+            <input type="text" class="form-control" id="input-name" placeholder="Fulano da Silva" autocomplete="on" maxlength="100" autofocus required>
+            <div class="dropdown">
+              <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
+              <ul class="dropdown-menu name" id="checkboxName"></ul>
+            </div>
           </div>
-          <div class="mb-3">
+          <div class="my-3">
             <button type="submit" class="btn btn-dark" id="searchButton">Pesquisar</button>
-          </div>
-          <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="filter">Selecionar fontes</button>
-        </div>
-        <div class="collapse mb-3 hidden" id="filter">
-          <div class="card card-body">
-            <h5 class="card-title text-center">Fontes:</h5>
-            <div class="searchOptions text-left"></div>
           </div>
         </div>
       </form>

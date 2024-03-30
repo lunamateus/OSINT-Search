@@ -1,34 +1,42 @@
 {
   "todos": {
     "fullName": "Todos",
-    "url": ""
+    "url": "",
+    "info": ["name", "cpf"]
   },
   "google": {
     "fullName": "Google",
-    "url": "https://www.google.com/search?q="
+    "url": "https://www.google.com/search?q=",
+    "info": ["name", "cpf"]
   },
   "transparencia": {
     "fullName": "Portal da Transparência",
-    "url": "https://portaldatransparencia.gov.br/busca?termo="
+    "url": "https://portaldatransparencia.gov.br/busca?termo=",
+    "info": ["name", "cpf"]
   },
   "jusbrasil": {
     "fullName": "JusBrasil",
-    "url": "https://www.jusbrasil.com.br/busca?q="
+    "url": "https://www.jusbrasil.com.br/busca?q=",
+    "info": ["name", "cpf"]
   },
   "escavador": {
     "fullName": "Escavador",
-    "url": "https://www.escavador.com/busca?qo=t&q="
+    "url": "https://www.escavador.com/busca?qo=t&q=",
+    "info": ["name", "cpf"]
   },
   "facebook": {
     "fullName": "Facebook (Requer login)",
-    "url": "https://www.facebook.com/search/top/?q="
+    "url": "https://www.facebook.com/search/top/?q=",
+    "info": ["name"]
   },
   "tiktok": {
     "fullName": "Tiktok (Requer login)",
-    "url": "https://www.tiktok.com/search?q="
+    "url": "https://www.tiktok.com/search?q=",
+    "info": ["name"]
   },
   "youtube": {
     "fullName": "Youtube",
-    "url": "https://www.youtube.com/results?search_query="
+    "url": "https://www.youtube.com/results?search_query=",
+    "info": ["name"]
   }
 }
