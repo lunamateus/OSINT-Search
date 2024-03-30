@@ -1,32 +1,26 @@
 {
   "todos": {
     "fullName": "Todos",
-    "functionName": "",
     "url": ""
   },
   "google": {
     "fullName": "Google",
-    "functionName": "googleSearch",
     "url": "https://www.google.com/search?q="
   },
   "transparencia": {
     "fullName": "Portal da Transparência",
-    "functionName": "transparenciaSearch",
     "url": "https://portaldatransparencia.gov.br/busca?termo="
   },
   "jusbrasil": {
     "fullName": "JusBrasil",
-    "functionName": "jusbrasilSearch",
     "url": "https://www.jusbrasil.com.br/busca?q="
   },
   "escavador": {
     "fullName": "Escavador",
-    "functionName": "escavadorSearch",
     "url": "https://www.escavador.com/busca?qo=t&q="
   },
   "youtube": {
     "fullName": "Youtube",
-    "functionName": "youtubeSearch",
     "url": "https://www.youtube.com/results?search_query="
   }
 }

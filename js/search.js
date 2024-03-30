@@ -23,10 +23,8 @@ function createCheckBoxes(websites, container) {
   
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);
-  
     container.appendChild(checkboxSection);
   }
-
   createEventListeners();
 }
 
@@ -59,31 +57,6 @@ function createEventListeners() {
   });
 }
 
-function googleSearch(input) {
-  const url = `https://www.google.com/search?q="${input}"`;
-  window.open(url, "_blank");
-}
-
-function transparenciaSearch(input) {
-  const url = `https://portaldatransparencia.gov.br/busca?termo=${input}`;
-  window.open(url, "_blank");
-}
-
-function jusbrasilSearch(input) {
-  const url = `https://www.jusbrasil.com.br/busca?q="${input}"`;
-  window.open(url, "_blank");
-}
-
-function escavadorSearch(input) {
-  const url = `https://www.escavador.com/busca?qo=c&q=${input}`;
-  window.open(url, "_blank");
-}
-
-function youtubeSearch(input) {
-  const url = `https://www.youtube.com/results?search_query=${input}`;
-  window.open(url, "_blank");
-}
-
 function createURL(domain, path) {
   return `${domain}"${path}"`;
 }
@@ -97,8 +70,7 @@ searchForm.addEventListener("submit", function(event) {
 
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      const websiteId = checkboxes[i].id;
-      const websiteName = websiteId.replace("Option", "");
+      const websiteName = checkboxes[i].id.replace("Option", "");
       window.open(createURL(websiteData[websiteName].url, encodedInput), "_blank");
     }
   }
