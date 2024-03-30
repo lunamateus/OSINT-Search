@@ -19,6 +19,14 @@
     "fullName": "Escavador",
     "url": "https://www.escavador.com/busca?qo=t&q="
   },
+  "facebook": {
+    "fullName": "Facebook (Requer login)",
+    "url": "https://www.facebook.com/search/top/?q="
+  },
+  "tiktok": {
+    "fullName": "Tiktok (Requer login)",
+    "url": "https://www.tiktok.com/search?q="
+  },
   "youtube": {
     "fullName": "Youtube",
     "url": "https://www.youtube.com/results?search_query="
