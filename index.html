@@ -14,12 +14,20 @@
         <div class="text-center">
           <img src="assets/images/icon.png" alt="Logo">
           <h2>Pesquisa OSINT</h2>
-          <div class="input-group">
-            <span class="input-group-text" for="name">Nome:</span>
-            <input type="text" class="form-control" id="input-name" placeholder="Fulano da Silva" autocomplete="on" maxlength="100" autofocus required>
+          <div class="input-group mt-3">
+            <span class="input-group-text" for="input-name">Nome:</span>
+            <input type="text" class="form-control" id="input-name" name="input-name" placeholder="Fulano da Silva" autocomplete="on" maxlength="100" autofocus>
             <div class="dropdown">
               <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
               <ul class="dropdown-menu name" id="checkboxName"></ul>
+            </div>
+          </div>
+          <div class="input-group mt-3">
+            <span class="input-group-text" for="input-cpf">CPF:</span>
+            <input type="number" class="form-control" id="input-cpf" name="input-cpf" placeholder="11 dígitos sem pontuação" autocomplete="on">
+            <div class="dropdown">
+              <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonCPF" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
+              <ul class="dropdown-menu cpf" id="checkboxCPF"></ul>
             </div>
           </div>
           <div class="my-3">

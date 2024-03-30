@@ -1,8 +1,8 @@
 import {loadData} from './data.js';
 
 const searchForm = document.getElementById('searchForm');
-const userInput = document.getElementById("name");
 const nameDropdown = document.getElementById("checkboxName");
+const cpfDropdown = document.getElementById("checkboxCPF");
 const websiteData = await loadData('sources');
 
 function createDropdownItems(container, items, field) {
@@ -65,6 +65,10 @@ function openPages(field) {
   const input = document.getElementById(`input-${field}`);
   const checkboxes = document.querySelectorAll(`.${field} input[type='checkbox']`);
   const encodedInput = encodeURIComponent(input.value);
+  if (!encodedInput) {
+    return;
+  }
+
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       try {
@@ -82,8 +86,10 @@ function createURL(domain, path) {
 }
 
 createDropdownItems(nameDropdown, websiteData, "name");
+createDropdownItems(cpfDropdown, websiteData, "cpf");
 
 searchForm.addEventListener("submit", function(event) {
   event.preventDefault();
   openPages("name");
+  openPages("cpf");
 });
