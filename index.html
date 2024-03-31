@@ -14,25 +14,25 @@
         <div class="text-center">
           <img src="assets/images/icon.png" alt="Logo">
           <h2>Pesquisa OSINT</h2>
-          <div class="input-group mt-3">
-            <span class="input-group-text" for="input-name">Nome:</span>
-            <input type="text" class="form-control" id="input-name" name="input-name" placeholder="Fulano da Silva" autocomplete="on" maxlength="100" autofocus>
-            <div class="dropdown">
-              <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
-              <ul class="dropdown-menu name" id="checkboxName"></ul>
-            </div>
+        </div>
+        <label class="mt-3" for="input-name">Nome</label>
+        <div class="input-group mt-1">
+          <input type="text" class="form-control" id="input-name" name="input-name" placeholder="Fulano da Silva" autocomplete="on" maxlength="100" autofocus>
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
+            <ul class="dropdown-menu name" id="checkboxName"></ul>
           </div>
-          <div class="input-group mt-3">
-            <span class="input-group-text" for="input-cpf">CPF:</span>
-            <input type="number" class="form-control" id="input-cpf" name="input-cpf" placeholder="11 dígitos sem pontuação" autocomplete="on">
-            <div class="dropdown">
-              <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonCPF" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
-              <ul class="dropdown-menu cpf" id="checkboxCPF"></ul>
-            </div>
+        </div>
+        <label class="mt-3" for="input-cpf">CPF</label>
+        <div class="input-group mt-1">
+          <input type="text" class="form-control" id="input-cpf" name="input-cpf" placeholder="11 dígitos ou NNN.NNN.NNN-NN" maxlength="14" autocomplete="on">
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonCPF" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
+            <ul class="dropdown-menu cpf" id="checkboxCPF"></ul>
           </div>
-          <div class="my-3">
-            <button type="submit" class="btn btn-dark" id="searchButton">Pesquisar</button>
-          </div>
+        </div>
+        <div class="mt-3 text-center">
+          <button type="submit" class="btn btn-dark" id="searchButton">Pesquisar</button>
         </div>
       </form>
     </div>

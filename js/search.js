@@ -1,8 +1,9 @@
-import {loadData} from './data.js';
+import {loadData, createURL, formatCPF, validateCPF} from './utils.js';
 
 const searchForm = document.getElementById('searchForm');
 const nameDropdown = document.getElementById("checkboxName");
 const cpfDropdown = document.getElementById("checkboxCPF");
+const cpfInput = document.getElementById('input-cpf');
 const websiteData = await loadData('sources');
 
 function createDropdownItems(container, items, field) {
@@ -12,19 +13,19 @@ function createDropdownItems(container, items, field) {
     }
     const checkboxSection = document.createElement("li");
     checkboxSection.classList.add("dropdown-item");
-  
+
     const checkboxInput = document.createElement("input");
     checkboxInput.type = "checkbox";
     checkboxInput.classList.add("form-check-input");
     checkboxInput.classList.add("me-1");
     checkboxInput.id = `${key}-${field}-option`;
     checkboxInput.checked = true;
-  
+
     const checkboxLabel = document.createElement("label");
     checkboxLabel.classList.add("form-check-label");
     checkboxLabel.htmlFor = checkboxInput.id;
     checkboxLabel.textContent = items[key].fullName;
-  
+
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);
     container.appendChild(checkboxSection);
@@ -53,7 +54,6 @@ function createEventListeners(field) {
       }
     });
   });
-  
   selectAllCheckbox.addEventListener("change", (event) => {
     checkboxes.forEach((checkbox) => {
       checkbox.checked = event.target.checked;
@@ -81,15 +81,20 @@ function openPages(field) {
   }
 }
 
-function createURL(domain, path) {
-  return `${domain}"${path}"`;
-}
-
 createDropdownItems(nameDropdown, websiteData, "name");
 createDropdownItems(cpfDropdown, websiteData, "cpf");
 
-searchForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  openPages("name");
-  openPages("cpf");
+searchForm.addEventListener('submit', function(e) {
+  if (!validateCPF(cpfInput.value)) {
+    e.preventDefault();
+    alert('CPF inválido. Verifique o número digitado.');
+    cpfInput.focus();
+  } else {
+    openPages("name");
+    openPages("cpf");
+  }
+});
+
+cpfInput.addEventListener("input", function() {
+  this.value = formatCPF(this.value);
 });
