@@ -95,6 +95,20 @@ searchForm.addEventListener('submit', function(e) {
   }
 });
 
+nameInput.addEventListener("blur", function() {
+  const strLength = this.value.length;
+  if (!strLength) {
+    this.classList.remove("is-valid");
+    this.classList.remove("is-invalid");
+  } else if (strLength < 3) {
+    this.classList.remove("is-valid");
+    this.classList.add("is-invalid");
+  } else {
+    this.classList.remove("is-invalid");
+    this.classList.add("is-valid");
+  }
+});
+
 cpfInput.addEventListener("input", function() {
   this.value = formatCPF(this.value);
   if (this.value.length < 14) {
