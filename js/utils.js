@@ -9,8 +9,8 @@ export async function loadData(fileName) {
   }
 }
 
-export function createURL(domain, path) {
-  return `${domain}"${path}"`;
+export function createURL(domain, path, quotes = true) {
+  return quotes ? `${domain}"${path}"` : `${domain}${path}`;
 }
 
 function onlyDigitis(str) {
@@ -66,4 +66,8 @@ export function formatCPF(input) {
     cpf = `${cpf.substr(0, 3)}.${cpf.substr(3, 3)}`;
   }
   return cpf;
+}
+
+export function isValidIP(strName) {
+  return strName.length > 0; 
 }

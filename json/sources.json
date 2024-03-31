@@ -2,7 +2,7 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "cpf"]
+    "info": ["name", "cpf", "ip"]
   },
   "google": {
     "fullName": "Google",
@@ -43,5 +43,25 @@
     "fullName": "Instagram [Google]",
     "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
     "info": ["name"]
+  },
+  "iplocation.io": {
+    "fullName": "IP Location",
+    "url": "https://iplocation.io/ip/",
+    "info": ["ip"]
+  },
+  "2ip.io": {
+    "fullName": "2IP",
+    "url": "https://2ip.io/info/",
+    "info": ["ip"]
+  },
+  "ipqualityscore": {
+    "fullName": "IP Quality Score",
+    "url": "https://www.ipqualityscore.com/ip-lookup/search/",
+    "info": ["ip"]
+  },
+  "browserleaks": {
+    "fullName": "Browser Leaks",
+    "url": "https://browserleaks.com/ip/",
+    "info": ["ip"]
   }
 }

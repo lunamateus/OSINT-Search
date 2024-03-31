@@ -1,10 +1,12 @@
-import {loadData, createURL, formatCPF, isValidName, isValidCPF} from './utils.js';
+import {loadData, createURL, formatCPF, isValidName, isValidCPF, isValidIP} from './utils.js';
 
 const searchForm = document.getElementById('searchForm');
 const nameDropdown = document.getElementById("checkboxName");
 const cpfDropdown = document.getElementById("checkboxCPF");
+const ipDropdown = document.getElementById("checkboxIP");
 const nameInput = document.getElementById('input-name');
 const cpfInput = document.getElementById('input-cpf');
+const ipInput = document.getElementById('input-ip');
 const websiteData = await loadData('sources');
 
 function createDropdownItems(container, items, field) {
@@ -62,7 +64,7 @@ function createEventListeners(field) {
   });
 }
 
-function openPages(field) {
+function openPages(field, quotes = true) {
   const input = document.getElementById(`input-${field}`);
   const checkboxes = document.querySelectorAll(`.${field} input[type='checkbox']`);
   const encodedInput = encodeURIComponent(input.value);
@@ -74,7 +76,7 @@ function openPages(field) {
     if (checkboxes[i].checked) {
       try {
         const websiteName = checkboxes[i].id.split("-")[0];
-        window.open(createURL(websiteData[websiteName].url, encodedInput), "_blank");
+        window.open(createURL(websiteData[websiteName].url, encodedInput, quotes), "_blank");
       } catch (error) {
         continue;
       }
@@ -84,6 +86,7 @@ function openPages(field) {
 
 createDropdownItems(nameDropdown, websiteData, "name");
 createDropdownItems(cpfDropdown, websiteData, "cpf");
+createDropdownItems(ipDropdown, websiteData, "ip");
 
 searchForm.addEventListener('submit', function(e) {
   if (isValidName(nameInput.value)) {
@@ -97,6 +100,9 @@ searchForm.addEventListener('submit', function(e) {
   } else {
     e.preventDefault();
     cpfInput.focus();
+  }
+  if(isValidIP(ipInput.value)) {
+    openPages("ip", false);
   }
 });
 
