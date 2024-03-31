@@ -17,7 +17,11 @@ function onlyDigitis(str) {
   return str.replace(/\D+/g, '');
 }
 
-export function validateCPF(strCPF) {
+export function isValidName(strName) {
+  return strName.length == 0 || strName.length > 3 ? true : false; 
+}
+
+export function isValidCPF(strCPF) {
   strCPF = onlyDigitis(strCPF);
   let sum = 0;
   let remainder;

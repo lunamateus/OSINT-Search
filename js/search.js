@@ -1,4 +1,4 @@
-import {loadData, createURL, formatCPF, validateCPF} from './utils.js';
+import {loadData, createURL, formatCPF, isValidName, isValidCPF} from './utils.js';
 
 const searchForm = document.getElementById('searchForm');
 const nameDropdown = document.getElementById("checkboxName");
@@ -86,12 +86,17 @@ createDropdownItems(nameDropdown, websiteData, "name");
 createDropdownItems(cpfDropdown, websiteData, "cpf");
 
 searchForm.addEventListener('submit', function(e) {
-  openPages("name");
-  if (!validateCPF(cpfInput.value)) {
+  if (isValidName(nameInput.value)) {
+    openPages("name");
+  } else {
+    e.preventDefault();
+    nameInput.focus();
+  }
+  if (isValidCPF(cpfInput.value)) {
+    openPages("cpf");
+  } else {
     e.preventDefault();
     cpfInput.focus();
-  } else {
-    openPages("cpf");
   }
 });
 
@@ -115,7 +120,7 @@ cpfInput.addEventListener("input", function() {
     this.classList.remove("is-valid");
     this.classList.remove("is-invalid");
   } else {
-    this.classList.add(validateCPF(cpfInput.value) ? "is-valid" : "is-invalid");
+    this.classList.add(isValidCPF(cpfInput.value) ? "is-valid" : "is-invalid");
   }
 });
 
