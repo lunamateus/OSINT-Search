@@ -21,6 +21,9 @@ export function validateCPF(strCPF) {
   strCPF = onlyDigitis(strCPF);
   let sum = 0;
   let remainder;
+  if (!strCPF) {
+    return true;
+  }
   if (strCPF == "00000000000") {
     return false;
   }

@@ -3,6 +3,7 @@ import {loadData, createURL, formatCPF, validateCPF} from './utils.js';
 const searchForm = document.getElementById('searchForm');
 const nameDropdown = document.getElementById("checkboxName");
 const cpfDropdown = document.getElementById("checkboxCPF");
+const nameInput = document.getElementById('input-name');
 const cpfInput = document.getElementById('input-cpf');
 const websiteData = await loadData('sources');
 
@@ -65,10 +66,10 @@ function openPages(field) {
   const input = document.getElementById(`input-${field}`);
   const checkboxes = document.querySelectorAll(`.${field} input[type='checkbox']`);
   const encodedInput = encodeURIComponent(input.value);
+
   if (!encodedInput) {
     return;
   }
-
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       try {
@@ -85,16 +86,22 @@ createDropdownItems(nameDropdown, websiteData, "name");
 createDropdownItems(cpfDropdown, websiteData, "cpf");
 
 searchForm.addEventListener('submit', function(e) {
+  openPages("name");
   if (!validateCPF(cpfInput.value)) {
     e.preventDefault();
-    alert('CPF inválido. Verifique o número digitado.');
     cpfInput.focus();
   } else {
-    openPages("name");
     openPages("cpf");
   }
 });
 
 cpfInput.addEventListener("input", function() {
   this.value = formatCPF(this.value);
+  if (this.value.length < 14) {
+    this.classList.remove("is-valid");
+    this.classList.remove("is-invalid");
+  } else {
+    this.classList.add(validateCPF(cpfInput.value) ? "is-valid" : "is-invalid");
+  }
 });
+
