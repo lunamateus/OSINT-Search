@@ -1,9 +1,7 @@
 import {loadData, createURL, formatCPF, setValidation, isValidName, isValidCPF, isValidIP} from './utils.js';
 
 const searchForm = document.getElementById('searchForm');
-const nameDropdown = document.getElementById("checkboxName");
-const cpfDropdown = document.getElementById("checkboxCPF");
-const ipDropdown = document.getElementById("checkboxIP");
+const dropdowns = document.querySelectorAll("ul.dropdown-menu");
 const nameInput = document.getElementById('input-name');
 const cpfInput = document.getElementById('input-cpf');
 const ipInput = document.getElementById('input-ip');
@@ -37,7 +35,7 @@ function createDropdownItems(container, items, field) {
 }
 
 function createEventListeners(field) {
-  const checkboxes = document.querySelectorAll(`.${field} input[type='checkbox']`);
+  const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   const selectAllCheckbox = document.getElementById(`todos-${field}-option`);
 
   checkboxes.forEach((checkbox) => {
@@ -84,9 +82,10 @@ function openPages(field, quotes = true) {
   }
 }
 
-createDropdownItems(nameDropdown, websiteData, "name");
-createDropdownItems(cpfDropdown, websiteData, "cpf");
-createDropdownItems(ipDropdown, websiteData, "ip");
+for (let dropdown of dropdowns) {
+  console.log(dropdown);
+  createDropdownItems(dropdown, websiteData, dropdown.getAttribute('data-text'));
+}
 
 searchForm.addEventListener('submit', function(e) {
   if (isValidName(nameInput.value)) {
@@ -110,26 +109,14 @@ searchForm.addEventListener('submit', function(e) {
 });
 
 nameInput.addEventListener("blur", function() {
-  if (!this.value.length) {
-    setValidation(this);
-  } else {
-    setValidation(this, isValidName(this.value));
-  }
+  setValidation(this, !this.value.length ? null : isValidName(this.value));
 });
 
 cpfInput.addEventListener("input", function() {
   this.value = formatCPF(this.value);
-  if (this.value.length < 14) {
-    setValidation(this);
-  } else {
-    setValidation(this, isValidCPF(this.value));
-  }
+  setValidation(this, this.value.length < 14 ? null : isValidCPF(this.value));
 });
 
 ipInput.addEventListener("blur", function() {
-  if (!this.value.length) {
-    setValidation(this);
-  } else {
-    setValidation(this, isValidIP(this.value))
-  }
+  setValidation(this, !this.value.length ? null : isValidIP(this.value));
 });

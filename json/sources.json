@@ -7,7 +7,12 @@
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "cpf"]
+    "info": ["name", "cpf", "ip"]
+  },
+  "bing": {
+    "fullName": "Bing",
+    "url": "https://www.bing.com/search?q=",
+    "info": ["name", "cpf", "ip"]
   },
   "transparencia": {
     "fullName": "Portal da Transparência",

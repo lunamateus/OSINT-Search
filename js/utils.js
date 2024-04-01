@@ -31,7 +31,7 @@ export function setValidation(element, isValid = null) {
 }
 
 export function isValidName(strName) {
-  return strName.length > 3; 
+  return strName.length >= 3; 
 }
 
 export function isValidCPF(strCPF) {
