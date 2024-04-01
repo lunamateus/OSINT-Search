@@ -49,16 +49,6 @@
     "url": "https://iplocation.io/ip/",
     "info": ["ip"]
   },
-  "2ip.io": {
-    "fullName": "2IP",
-    "url": "https://2ip.io/info/",
-    "info": ["ip"]
-  },
-  "ipqualityscore": {
-    "fullName": "IP Quality Score",
-    "url": "https://www.ipqualityscore.com/ip-lookup/search/",
-    "info": ["ip"]
-  },
   "browserleaks": {
     "fullName": "Browser Leaks",
     "url": "https://browserleaks.com/ip/",

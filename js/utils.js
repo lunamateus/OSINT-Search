@@ -17,8 +17,21 @@ function onlyDigitis(str) {
   return str.replace(/\D+/g, '');
 }
 
+export function setValidation(element, isValid = null) {
+  if (isValid == null) {
+    element.classList.remove("is-valid");
+    element.classList.remove("is-invalid");
+  } else if (isValid == true) {
+    element.classList.remove("is-invalid");
+    element.classList.add("is-valid");
+  } else {
+    element.classList.remove("is-valid");
+    element.classList.add("is-invalid");
+  }
+}
+
 export function isValidName(strName) {
-  return strName.length == 0 || strName.length > 3 ? true : false; 
+  return strName.length > 3; 
 }
 
 export function isValidCPF(strCPF) {
@@ -68,6 +81,25 @@ export function formatCPF(input) {
   return cpf;
 }
 
-export function isValidIP(strName) {
-  return strName.length > 0; 
+export function isValidIP(ip) {
+  if (ip.length == 0) { 
+    return true;
+  }
+  // Check if the IP is valid IPv4
+  if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip)) {
+    return true;
+  }
+  // Check if the IP is valid IPv6
+  if (/^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,7}:$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$/.test(ip) ||
+      /^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$/.test(ip) ||
+      /^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$/.test(ip) ||
+      /^:((:[0-9a-fA-F]{1,4}){1,7}|:)$/.test(ip)) {
+    return true;
+  }
+  return false;
 }

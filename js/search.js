@@ -1,4 +1,4 @@
-import {loadData, createURL, formatCPF, isValidName, isValidCPF, isValidIP} from './utils.js';
+import {loadData, createURL, formatCPF, setValidation, isValidName, isValidCPF, isValidIP} from './utils.js';
 
 const searchForm = document.getElementById('searchForm');
 const nameDropdown = document.getElementById("checkboxName");
@@ -103,30 +103,33 @@ searchForm.addEventListener('submit', function(e) {
   }
   if(isValidIP(ipInput.value)) {
     openPages("ip", false);
+  } else {
+    e.preventDefault();
+    ipInput.focus();
   }
 });
 
 nameInput.addEventListener("blur", function() {
-  const strLength = this.value.length;
-  if (!strLength) {
-    this.classList.remove("is-valid");
-    this.classList.remove("is-invalid");
-  } else if (strLength < 3) {
-    this.classList.remove("is-valid");
-    this.classList.add("is-invalid");
+  if (!this.value.length) {
+    setValidation(this);
   } else {
-    this.classList.remove("is-invalid");
-    this.classList.add("is-valid");
+    setValidation(this, isValidName(this.value));
   }
 });
 
 cpfInput.addEventListener("input", function() {
   this.value = formatCPF(this.value);
   if (this.value.length < 14) {
-    this.classList.remove("is-valid");
-    this.classList.remove("is-invalid");
+    setValidation(this);
   } else {
-    this.classList.add(isValidCPF(cpfInput.value) ? "is-valid" : "is-invalid");
+    setValidation(this, isValidCPF(this.value));
   }
 });
 
+ipInput.addEventListener("blur", function() {
+  if (!this.value.length) {
+    setValidation(this);
+  } else {
+    setValidation(this, isValidIP(this.value))
+  }
+});
