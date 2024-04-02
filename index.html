@@ -17,35 +17,46 @@
         </div>
         <label class="mt-3" for="input-cpf">CPF</label>
         <div class="input-group has-validation">
-          <input type="text" class="form-control" id="input-cpf" name="input-cpf" data-text="cpf" placeholder="11 dígitos ou NNN.NNN.NNN-NN" aria-describedby="validationServerCPFFeedback" maxlength="14" autocomplete="on">
+          <input type="text" class="form-control" id="input-cpf" name="input-cpf" data-text="cpf" placeholder="11 dígitos ou NNN.NNN.NNN-NN" aria-describedby="validationCPFFeedback" maxlength="14" autocomplete="on">
           <div class="dropdown">
             <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonCPF" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
             <ul class="dropdown-menu" id="checkboxCPF" data-text="cpf"></ul>
           </div>
-          <div id="validationServerCPFFeedback" class="invalid-feedback">
+          <div id="validationCPFFeedback" class="invalid-feedback">
             CPF inválido. Verifique o número digitado.
           </div>
         </div>
         <label class="mt-3" for="input-name">Nome</label>
         <div class="input-group has-validation">
-          <input type="text" class="form-control" id="input-name" name="input-name" data-text="name" placeholder="Fulano da Silva" aria-describedby="validationServerNameFeedback" maxlength="100" autocomplete="on" autofocus>
+          <input type="text" class="form-control" id="input-name" name="input-name" data-text="name" placeholder="Fulano da Silva" aria-describedby="validationNameFeedback" maxlength="100" autocomplete="on" autofocus>
           <div class="dropdown">
             <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
             <ul class="dropdown-menu" id="checkboxName" data-text="name"></ul>
           </div>
-          <div id="validationServerNameFeedback" class="invalid-feedback">
+          <div id="validationNameFeedback" class="invalid-feedback">
             Digite um nome com pelo menos 3 letras.
           </div>
         </div>
         <label class="mt-3" for="input-ip">IP</label>
         <div class="input-group has-validation">
-          <input type="text" class="form-control" id="input-ip" name="input-ip" data-text="ip" placeholder="Digite um IPv4 ou IPv6" aria-describedby="validationServerIPFeedback" autocomplete="on">
+          <input type="text" class="form-control" id="input-ip" name="input-ip" data-text="ip" placeholder="Digite um IPv4 ou IPv6" aria-describedby="validationIPFeedback" autocomplete="on">
           <div class="dropdown">
             <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonIP" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
             <ul class="dropdown-menu" id="checkboxIP" data-text="ip"></ul>
           </div>
-          <div id="validationServerIPFeedback" class="invalid-feedback">
+          <div id="validationIPFeedback" class="invalid-feedback">
             IP inválido. Verifique o número digitado.
+          </div>
+        </div>
+        <label class="mt-3" for="input-plate">Placa Veicular</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" id="input-plate" name="input-plate" data-text="plate" placeholder="Digite a placa" aria-describedby="validationPlateFeedback" autocomplete="on">
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonPlate" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Selecionar</button>
+            <ul class="dropdown-menu" id="checkboxPlate" data-text="plate"></ul>
+          </div>
+          <div id="validationPlateFeedback" class="invalid-feedback">
+            Verifique a placa digitada.
           </div>
         </div>
         <div class="mt-3 text-center">

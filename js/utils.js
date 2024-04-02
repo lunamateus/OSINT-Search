@@ -17,6 +17,10 @@ function onlyDigitis(str) {
   return str.replace(/\D+/g, '');
 }
 
+export function onlyAlphaNum(str) {
+  return str.replace(/[^a-zA-Z0-9]/g, '');
+}
+
 export function setValidation(element, isValid = null) {
   if (isValid == null) {
     element.classList.remove("is-valid");
@@ -37,8 +41,10 @@ export function isValid(field, value) {
     return isValidCPF(value);
   } else if (field == 'ip') {
     return isValidIP(value);
+  } else if (field == 'plate') {
+    return isValidPlate(value);
   }
-  return false;
+  return true;
 }
 
 function isValidName(strName) {
@@ -92,6 +98,10 @@ export function formatCPF(input) {
   return cpf;
 }
 
+export function formatPlate(input) {
+  return onlyLetters(onlyDigitis(input))
+}
+
 function isValidIP(ip) {
   if (ip.length == 0) { 
     return true;
@@ -113,4 +123,9 @@ function isValidIP(ip) {
     return true;
   }
   return false;
+}
+
+function isValidPlate(plate) {
+  const platePattern = /^[a-zA-Z]{3}\d{1}[a-zA-Z\d]{1}\d{2}$/;
+  return platePattern.test(onlyAlphaNum(plate));
 }

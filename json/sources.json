@@ -2,37 +2,37 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "cpf", "ip"],
+    "info": ["name", "cpf", "ip", "plate"],
     "quotes": true
   },
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "cpf", "ip"],
+    "info": ["name", "cpf", "ip", "plate"],
     "quotes": true
   },
   "bing": {
     "fullName": "Bing",
     "url": "https://www.bing.com/search?q=",
-    "info": ["name", "cpf", "ip"],
+    "info": ["name", "cpf", "ip", "plate"],
     "quotes": true
   },
   "jusbrasil": {
     "fullName": "JusBrasil",
     "url": "https://www.jusbrasil.com.br/busca?q=",
-    "info": ["name", "cpf"],
+    "info": ["name", "cpf", "plate"],
     "quotes": true
   },
   "escavador": {
     "fullName": "Escavador",
     "url": "https://www.escavador.com/busca?qo=t&q=",
-    "info": ["name", "cpf"],
+    "info": ["name", "cpf", "plate"],
     "quotes": true
   },
   "transparencia": {
     "fullName": "Transparência GOV.BR",
     "url": "https://portaldatransparencia.gov.br/busca?termo=",
-    "info": ["name", "cpf"],
+    "info": ["name", "cpf", "plate"],
     "quotes": true
   },
   "tranparenciaDF": {
@@ -99,6 +99,24 @@
     "fullName": "Registro BR",
     "url": "https://registro.br/tecnologia/ferramentas/whois?search=",
     "info": ["cpf", "ip"],
+    "quotes": false
+  },
+  "placafipe": {
+    "fullName": "Placa FIPE",
+    "url": "https://placafipe.com/placa/",
+    "info": ["plate"],
+    "quotes": false
+  },
+  "keplaca": {
+    "fullName": "Ke Placa",
+    "url": "https://www.keplaca.com/placa/",
+    "info": ["plate"],
+    "quotes": false
+  },
+  "placaipva": {
+    "fullName": "Placa IPVA",
+    "url": "https://placaipva.com.br/placa/",
+    "info": ["plate"],
     "quotes": false
   }
 }
