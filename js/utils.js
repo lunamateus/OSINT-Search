@@ -17,8 +17,12 @@ function onlyDigitis(str) {
   return str.replace(/\D+/g, '');
 }
 
-export function onlyAlphaNum(str) {
+export function toAlphaNum(str) {
   return str.replace(/[^a-zA-Z0-9]/g, '');
+}
+
+export function removeSpacesAndSlash(str) {
+  return str.replace(/[\s/]/g, '');
 }
 
 export function setValidation(element, isValid = null) {
@@ -37,6 +41,8 @@ export function setValidation(element, isValid = null) {
 export function isValid(field, value) {
   if (field == 'name') {
     return isValidName(value);
+  } else if (field == 'username') {
+    return isValidUsername(value);
   } else if (field == 'cpf') {
     return isValidCPF(value);
   } else if (field == 'ip') {
@@ -49,6 +55,10 @@ export function isValid(field, value) {
 
 function isValidName(strName) {
   return strName.length >= 3; 
+}
+
+function isValidUsername(strName) {
+  return strName.length >= 2; 
 }
 
 function isValidCPF(strCPF) {

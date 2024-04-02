@@ -2,7 +2,7 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "cpf", "ip", "plate"],
+    "info": ["name", "username", "cpf", "ip", "plate"],
     "quotes": true
   },
   "google": {
@@ -50,25 +50,25 @@
   "facebook": {
     "fullName": "Facebook (Requer login)",
     "url": "https://www.facebook.com/search/top/?q=",
-    "info": ["name"],
-    "quotes": true
+    "info": ["name", "username"],
+    "quotes": false
   },
   "tiktok": {
     "fullName": "Tiktok (Requer login)",
     "url": "https://www.tiktok.com/search?q=",
-    "info": ["name"],
-    "quotes": true
+    "info": ["name", "username"],
+    "quotes": false
   },
   "youtube": {
     "fullName": "Youtube",
     "url": "https://www.youtube.com/results?search_query=",
-    "info": ["name"],
-    "quotes": true
+    "info": ["name", "username"],
+    "quotes": false
   },
   "instagram": {
     "fullName": "Instagram [Google]",
     "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
-    "info": ["name"],
+    "info": ["name", "username"],
     "quotes": true
   },
   "iplocation": {
@@ -117,6 +117,66 @@
     "fullName": "Placa IPVA",
     "url": "https://placaipva.com.br/placa/",
     "info": ["plate"],
+    "quotes": false
+  },
+  "tinder": {
+    "fullName": "Tinder",
+    "url": "https://tinder.com/@",
+    "info": ["username"],
+    "quotes": false
+  },
+  "Tiktok": {
+    "fullName": "Tiktok",
+    "url": "https://www.tiktok.com/@",
+    "info": ["username"],
+    "quotes": false
+  },
+  "snapchat": {
+    "fullName": "Snapchat",
+    "url": "https://www.snapchat.com/add/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "Twitter": {
+    "fullName": "Twitter",
+    "url": "https://twitter.com/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "reddit": {
+    "fullName": "Reddit",
+    "url": "https://www.reddit.com/user/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "steam": {
+    "fullName": "Steam",
+    "url": "https://steamcommunity.com/id/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "github": {
+    "fullName": "Github",
+    "url": "https://github.com/search?q=",
+    "info": ["name", "username"],
+    "quotes": false
+  },
+  "twitch": {
+    "fullName": "Twitch",
+    "url": "https://www.twitch.tv/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "kwai": {
+    "fullName": "Kwai",
+    "url": "https://www.kwai.com/@",
+    "info": ["username"],
+    "quotes": false
+  },
+  "pinterest": {
+    "fullName": "Pinterest",
+    "url": "https://www.pinterest.com/",
+    "info": ["username"],
     "quotes": false
   }
 }
