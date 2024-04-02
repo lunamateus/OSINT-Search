@@ -60,7 +60,7 @@ function createEventListeners(field) {
   });
 }
 
-function openPages(field, quotes = true) {
+function openPages(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   const input = document.getElementById(`input-${field}`);
   const encodedInput = encodeURIComponent(input.value);
@@ -72,7 +72,8 @@ function openPages(field, quotes = true) {
     if (checkboxes[i].checked) {
       try {
         const websiteName = checkboxes[i].id.split("-")[0];
-        window.open(createURL(websiteData[websiteName].url, encodedInput, quotes), "_blank");
+        const website = websiteData[websiteName];
+        window.open(createURL(website.url, encodedInput, website.quotes), "_blank");
       } catch (error) {
         console.log(error);
         continue;
@@ -101,7 +102,7 @@ searchForm.addEventListener("submit", function(e) {
   for (const input of inputTexts) {
     const type = input.getAttribute("data-text");
     if (isValid(type, input.value)) {
-      openPages(type, type == "ip" ? false : true);
+      openPages(type);
     } else {
       input.focus();
     }

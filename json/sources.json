@@ -2,61 +2,103 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "cpf", "ip"]
+    "info": ["name", "cpf", "ip"],
+    "quotes": true
   },
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "cpf", "ip"]
+    "info": ["name", "cpf", "ip"],
+    "quotes": true
   },
   "bing": {
     "fullName": "Bing",
     "url": "https://www.bing.com/search?q=",
-    "info": ["name", "cpf", "ip"]
-  },
-  "transparencia": {
-    "fullName": "Portal da Transparência",
-    "url": "https://portaldatransparencia.gov.br/busca?termo=",
-    "info": ["name", "cpf"]
+    "info": ["name", "cpf", "ip"],
+    "quotes": true
   },
   "jusbrasil": {
     "fullName": "JusBrasil",
     "url": "https://www.jusbrasil.com.br/busca?q=",
-    "info": ["name", "cpf"]
+    "info": ["name", "cpf"],
+    "quotes": true
   },
   "escavador": {
     "fullName": "Escavador",
     "url": "https://www.escavador.com/busca?qo=t&q=",
-    "info": ["name", "cpf"]
+    "info": ["name", "cpf"],
+    "quotes": true
+  },
+  "transparencia": {
+    "fullName": "Transparência GOV.BR",
+    "url": "https://portaldatransparencia.gov.br/busca?termo=",
+    "info": ["name", "cpf"],
+    "quotes": true
+  },
+  "tranparenciaDF": {
+    "fullName": "Transparência DF (servidores)",
+    "url": "https://www.transparencia.df.gov.br/#/servidores/remuneracao?nome=",
+    "info": ["name"],
+    "quotes": false
+  },
+  "tranparenciaDF2": {
+    "fullName": "Transparência DF",
+    "url": "https://www.transparencia.df.gov.br/#/busca?q=",
+    "info": ["name", "cpf"],
+    "quotes": false
   },
   "facebook": {
     "fullName": "Facebook (Requer login)",
     "url": "https://www.facebook.com/search/top/?q=",
-    "info": ["name"]
+    "info": ["name"],
+    "quotes": true
   },
   "tiktok": {
     "fullName": "Tiktok (Requer login)",
     "url": "https://www.tiktok.com/search?q=",
-    "info": ["name"]
+    "info": ["name"],
+    "quotes": true
   },
   "youtube": {
     "fullName": "Youtube",
     "url": "https://www.youtube.com/results?search_query=",
-    "info": ["name"]
+    "info": ["name"],
+    "quotes": true
   },
   "instagram": {
     "fullName": "Instagram [Google]",
     "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
-    "info": ["name"]
+    "info": ["name"],
+    "quotes": true
   },
   "iplocation": {
     "fullName": "IP Location",
     "url": "https://iplocation.io/ip/",
-    "info": ["ip"]
+    "info": ["ip"],
+    "quotes": false
   },
   "browserleaks": {
     "fullName": "Browser Leaks",
     "url": "https://browserleaks.com/ip/",
-    "info": ["ip"]
+    "info": ["ip"],
+    "quotes": false
+  },
+  "whois": {
+    "fullName": "Who.is",
+    "url": "https://who.is/whois-ip/ip-address/",
+    "info": ["ip"],
+    "quotes": false
+  },
+  "whoislacnic": {
+    "fullName": "Who.is lacnic",
+    "url": "https://query.milacnic.lacnic.net/search?id=",
+    "info": ["ip"],
+    "quotes": false
+  },
+  "registrobr": {
+    "fullName": "Registro BR",
+    "url": "https://registro.br/tecnologia/ferramentas/whois?search=",
+    "info": ["cpf", "ip"],
+    "quotes": false
   }
 }
