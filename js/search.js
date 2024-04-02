@@ -1,4 +1,4 @@
-import {loadData, createURL, formatCPF, removeSpacesAndSlash, toAlphaNum, setValidation, isValid} from './utils.js';
+import {loadData, createURL, formatCPF, formatUsername, toAlphaNum, setValidation, isValid} from './utils.js';
 
 const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
@@ -97,12 +97,13 @@ document.getElementById('input-cpf').addEventListener("input", function(e) {
   setValidation(e.target, e.target.value.length < 14 ? null : isValid("cpf", e.target.value));
 });
 
-document.getElementById('input-username').addEventListener("input", function(event) {
-  event.target.value = removeSpacesAndSlash(event.target.value);
+document.getElementById('input-username').addEventListener("input", function(e) {
+  e.target.value = formatUsername(e.target.value);
 });
 
-document.getElementById('input-plate').addEventListener("input", function(event) {
-  event.target.value = toAlphaNum(event.target.value);
+document.getElementById('input-plate').addEventListener("input", function(e) {
+  e.target.value = toAlphaNum(e.target.value);
+  setValidation(e.target, e.target.value.length < 7 ? null : isValid("plate", e.target.value));
 });
 
 searchForm.addEventListener("submit", function(e) {

@@ -13,7 +13,7 @@ export function createURL(domain, path, quotes = true) {
   return quotes ? `${domain}"${path}"` : `${domain}${path}`;
 }
 
-function onlyDigitis(str) {
+function onlyDigits(str) {
   return str.replace(/\D+/g, '');
 }
 
@@ -21,8 +21,8 @@ export function toAlphaNum(str) {
   return str.replace(/[^a-zA-Z0-9]/g, '');
 }
 
-export function removeSpacesAndSlash(str) {
-  return str.replace(/[\s/]/g, '');
+export function formatUsername(str) {
+  return str.replace(/[\s/]/g, ''); //removes whitespaces and slashes
 }
 
 export function setValidation(element, isValid = null) {
@@ -62,7 +62,7 @@ function isValidUsername(strName) {
 }
 
 function isValidCPF(strCPF) {
-  strCPF = onlyDigitis(strCPF);
+  strCPF = onlyDigits(strCPF);
   let sum = 0;
   let remainder;
   if (!strCPF) {
@@ -96,7 +96,7 @@ function isValidCPF(strCPF) {
 }
 
 export function formatCPF(input) {
-  let cpf = onlyDigitis(input);
+  let cpf = onlyDigits(input);
 
   if (cpf.length > 9) {
     cpf = `${cpf.substr(0, 3)}.${cpf.substr(3, 3)}.${cpf.substr(6, 3)}-${cpf.substr(9, 2)}`;
@@ -109,7 +109,7 @@ export function formatCPF(input) {
 }
 
 export function formatPlate(input) {
-  return onlyLetters(onlyDigitis(input))
+  return onlyLetters(onlyDigits(input))
 }
 
 function isValidIP(ip) {
@@ -137,5 +137,5 @@ function isValidIP(ip) {
 
 function isValidPlate(plate) {
   const platePattern = /^[a-zA-Z]{3}\d{1}[a-zA-Z\d]{1}\d{2}$/;
-  return platePattern.test(onlyAlphaNum(plate));
+  return platePattern.test(toAlphaNum(plate));
 }
