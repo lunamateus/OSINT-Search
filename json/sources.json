@@ -49,7 +49,7 @@
     "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
     "info": ["name"]
   },
-  "iplocation.io": {
+  "iplocation": {
     "fullName": "IP Location",
     "url": "https://iplocation.io/ip/",
     "info": ["ip"]

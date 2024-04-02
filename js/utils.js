@@ -30,11 +30,22 @@ export function setValidation(element, isValid = null) {
   }
 }
 
-export function isValidName(strName) {
+export function isValid(field, value) {
+  if (field == 'name') {
+    return isValidName(value);
+  } else if (field == 'cpf') {
+    return isValidCPF(value);
+  } else if (field == 'ip') {
+    return isValidIP(value);
+  }
+  return false;
+}
+
+function isValidName(strName) {
   return strName.length >= 3; 
 }
 
-export function isValidCPF(strCPF) {
+function isValidCPF(strCPF) {
   strCPF = onlyDigitis(strCPF);
   let sum = 0;
   let remainder;
@@ -81,7 +92,7 @@ export function formatCPF(input) {
   return cpf;
 }
 
-export function isValidIP(ip) {
+function isValidIP(ip) {
   if (ip.length == 0) { 
     return true;
   }

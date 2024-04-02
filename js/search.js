@@ -1,7 +1,8 @@
-import {loadData, createURL, formatCPF, setValidation, isValidName, isValidCPF, isValidIP} from './utils.js';
+import {loadData, createURL, formatCPF, setValidation, isValid} from './utils.js';
 
-const searchForm = document.getElementById('searchForm');
+const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
+const inputTexts = document.querySelectorAll("input[type='text']");
 const nameInput = document.getElementById('input-name');
 const cpfInput = document.getElementById('input-cpf');
 const ipInput = document.getElementById('input-ip');
@@ -63,10 +64,10 @@ function createEventListeners(field) {
 }
 
 function openPages(field, quotes = true) {
+  const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   const input = document.getElementById(`input-${field}`);
-  const checkboxes = document.querySelectorAll(`.${field} input[type='checkbox']`);
   const encodedInput = encodeURIComponent(input.value);
-
+  
   if (!encodedInput) {
     return;
   }
@@ -76,6 +77,7 @@ function openPages(field, quotes = true) {
         const websiteName = checkboxes[i].id.split("-")[0];
         window.open(createURL(websiteData[websiteName].url, encodedInput, quotes), "_blank");
       } catch (error) {
+        console.log(error);
         continue;
       }
     }
@@ -83,40 +85,30 @@ function openPages(field, quotes = true) {
 }
 
 for (let dropdown of dropdowns) {
-  console.log(dropdown);
   createDropdownItems(dropdown, websiteData, dropdown.getAttribute('data-text'));
 }
 
-searchForm.addEventListener('submit', function(e) {
-  if (isValidName(nameInput.value)) {
-    openPages("name");
-  } else {
-    e.preventDefault();
-    nameInput.focus();
-  }
-  if (isValidCPF(cpfInput.value)) {
-    openPages("cpf");
-  } else {
-    e.preventDefault();
-    cpfInput.focus();
-  }
-  if(isValidIP(ipInput.value)) {
-    openPages("ip", false);
-  } else {
-    e.preventDefault();
-    ipInput.focus();
+searchForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  for (const input of inputTexts) {
+    const type = input.getAttribute("data-text");
+    if (isValid(type, input.value)) {
+      openPages(type);
+    } else {
+      input.focus();
+    }
   }
 });
 
 nameInput.addEventListener("blur", function() {
-  setValidation(this, !this.value.length ? null : isValidName(this.value));
+  setValidation(this, !this.value.length ? null : isValid('name', this.value));
 });
 
 cpfInput.addEventListener("input", function() {
   this.value = formatCPF(this.value);
-  setValidation(this, this.value.length < 14 ? null : isValidCPF(this.value));
+  setValidation(this, this.value.length < 14 ? null : isValid('cpf', this.value));
 });
 
 ipInput.addEventListener("blur", function() {
-  setValidation(this, !this.value.length ? null : isValidIP(this.value));
+  setValidation(this, !this.value.length ? null : isValid('ip', this.value));
 });
