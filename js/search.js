@@ -3,9 +3,6 @@ import {loadData, createURL, formatCPF, setValidation, isValid} from './utils.js
 const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
 const inputTexts = document.querySelectorAll("input[type='text']");
-const nameInput = document.getElementById('input-name');
-const cpfInput = document.getElementById('input-cpf');
-const ipInput = document.getElementById('input-ip');
 const websiteData = await loadData('sources');
 
 function createDropdownItems(container, items, field) {
@@ -88,27 +85,25 @@ for (let dropdown of dropdowns) {
   createDropdownItems(dropdown, websiteData, dropdown.getAttribute('data-text'));
 }
 
+for (let input = 1; input < inputTexts.length; input++) {
+  inputTexts[input].addEventListener("blur", function() {
+    setValidation(this, !this.value.length ? null : isValid(this.getAttribute("data-text"), this.value));
+  });
+}
+
+document.getElementById('input-cpf').addEventListener("input", function() {
+  this.value = formatCPF(this.value);
+  setValidation(this, this.value.length < 14 ? null : isValid("cpf", this.value));
+});
+
 searchForm.addEventListener("submit", function(e) {
   e.preventDefault();
   for (const input of inputTexts) {
     const type = input.getAttribute("data-text");
     if (isValid(type, input.value)) {
-      openPages(type);
+      openPages(type, type == "ip" ? false : true);
     } else {
       input.focus();
     }
   }
-});
-
-nameInput.addEventListener("blur", function() {
-  setValidation(this, !this.value.length ? null : isValid('name', this.value));
-});
-
-cpfInput.addEventListener("input", function() {
-  this.value = formatCPF(this.value);
-  setValidation(this, this.value.length < 14 ? null : isValid('cpf', this.value));
-});
-
-ipInput.addEventListener("blur", function() {
-  setValidation(this, !this.value.length ? null : isValid('ip', this.value));
 });
