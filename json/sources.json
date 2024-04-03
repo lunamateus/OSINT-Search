@@ -190,5 +190,11 @@
     "url": "https://t.me/",
     "info": ["username", "phone"],
     "quotes": false
+  },
+  "messenger": {
+    "fullName": "Facebook Messenger",
+    "url": "https://m.me/",
+    "info": ["username", "phone"],
+    "quotes": false
   }
 }
