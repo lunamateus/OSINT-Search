@@ -80,16 +80,18 @@ function addSelectorOptions(countryCodes, id) {
 
 function openPages(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
-  const input = document.getElementById(`input-${field}`);
-  let encodedInput = encodeURIComponent(input.value);
-  
-  if (!encodedInput) {
+  let inputValue = document.getElementById(`input-${field}`).value;
+  let encodedInput = "";
+
+  if (!inputValue) {
     return;
+  } else {
+    if (field == "phone") {
+      inputValue = document.getElementById("countryCodeSelector").value + inputValue;
+    }
+    encodedInput = encodeURIComponent(inputValue);
   }
-  if (field == "phone") {
-    const countryCode = document.getElementById("countryCodeSelector").value;
-    encodedInput = countryCode + encodedInput;
-  }
+
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       try {
