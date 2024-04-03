@@ -64,7 +64,7 @@ function isValidUsername(strName) {
 }
 
 function isValidPhone(str) {
-  return str;
+  return str.length < 4 || str.length > 18;
 }
 
 function isValidCPF(strCPF) {
