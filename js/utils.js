@@ -49,6 +49,8 @@ export function isValid(field, value) {
     return isValidIP(value);
   } else if (field == 'plate') {
     return isValidPlate(value);
+  } else if (field == 'phone') {
+    return isValidPhone(value);
   }
   return true;
 }
@@ -59,6 +61,10 @@ function isValidName(strName) {
 
 function isValidUsername(strName) {
   return strName.length >= 2; 
+}
+
+function isValidPhone(str) {
+  return str.length == 11;
 }
 
 function isValidCPF(strCPF) {

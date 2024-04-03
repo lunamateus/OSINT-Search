@@ -2,19 +2,19 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "username", "cpf", "ip", "plate"],
+    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
     "quotes": true
   },
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "username", "cpf", "ip", "plate"],
+    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
     "quotes": true
   },
   "bing": {
     "fullName": "Bing",
     "url": "https://www.bing.com/search?q=",
-    "info": ["name", "username", "cpf", "ip", "plate"],
+    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
     "quotes": true
   },
   "jusbrasil": {
@@ -176,6 +176,18 @@
   "pinterest": {
     "fullName": "Pinterest",
     "url": "https://www.pinterest.com/",
+    "info": ["username"],
+    "quotes": false
+  },
+  "whatsapp": {
+    "fullName": "Whatsapp",
+    "url": "https://wa.me/55",
+    "info": ["phone"],
+    "quotes": false
+  },
+  "telegram": {
+    "fullName": "Telegram",
+    "url": "https://web.telegram.org/k/@",
     "info": ["username"],
     "quotes": false
   }

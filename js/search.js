@@ -110,6 +110,7 @@ searchForm.addEventListener("submit", function(e) {
   e.preventDefault();
   for (const input of inputTexts) {
     const type = input.getAttribute("data-text");
+    console.log(type);
     if (isValid(type, input.value)) {
       openPages(type);
     } else {
