@@ -1,4 +1,4 @@
-import {loadData, createURL, formatCPF, formatUsername, toAlphaNum, setValidation, isValid} from './utils.js';
+import {loadData, createURL, formatCPF, formatUsername, toDigits, toAlphaNum, setValidation, isValid} from './utils.js';
 
 const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
@@ -125,6 +125,10 @@ document.getElementById('input-cpf').addEventListener("input", function(e) {
 
 document.getElementById('input-username').addEventListener("input", function(e) {
   e.target.value = formatUsername(e.target.value);
+});
+
+document.getElementById('input-phone').addEventListener("input", function(e) {
+  e.target.value = toDigits(e.target.value);
 });
 
 document.getElementById('input-plate').addEventListener("input", function(e) {

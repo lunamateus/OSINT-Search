@@ -13,7 +13,7 @@ export function createURL(domain, path, quotes = true) {
   return quotes ? `${domain}"${path}"` : `${domain}${path}`;
 }
 
-function onlyDigits(str) {
+export function toDigits(str) {
   return str.replace(/\D+/g, '');
 }
 
@@ -64,11 +64,11 @@ function isValidUsername(strName) {
 }
 
 function isValidPhone(str) {
-  return str.length == 11;
+  return str;
 }
 
 function isValidCPF(strCPF) {
-  strCPF = onlyDigits(strCPF);
+  strCPF = toDigits(strCPF);
   let sum = 0;
   let remainder;
   if (!strCPF) {
@@ -102,7 +102,7 @@ function isValidCPF(strCPF) {
 }
 
 export function formatCPF(input) {
-  let cpf = onlyDigits(input);
+  let cpf = toDigits(input);
 
   if (cpf.length > 9) {
     cpf = `${cpf.substr(0, 3)}.${cpf.substr(3, 3)}.${cpf.substr(6, 3)}-${cpf.substr(9, 2)}`;
@@ -115,7 +115,7 @@ export function formatCPF(input) {
 }
 
 export function formatPlate(input) {
-  return onlyLetters(onlyDigits(input));
+  return onlyLetters(toDigits(input));
 }
 
 function isValidIP(ip) {
