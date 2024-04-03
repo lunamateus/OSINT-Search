@@ -181,14 +181,14 @@
   },
   "whatsapp": {
     "fullName": "Whatsapp",
-    "url": "https://wa.me/55",
+    "url": "https://wa.me/",
     "info": ["phone"],
     "quotes": false
   },
   "telegram": {
     "fullName": "Telegram",
-    "url": "https://web.telegram.org/k/@",
-    "info": ["username"],
+    "url": "https://t.me/",
+    "info": ["username", "phone"],
     "quotes": false
   }
 }

@@ -3,7 +3,9 @@ import {loadData, createURL, formatCPF, formatUsername, toAlphaNum, setValidatio
 const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
 const inputTexts = document.querySelectorAll("input[type='text']");
+const countryCodeDiv = document.getElementById("countryCodeDiv");
 const websiteData = await loadData('sources');
+const countryData = await loadData('countryCodes');
 
 function createDropdownItems(container, items, field) {
   for (let key in items) {
@@ -60,13 +62,33 @@ function createEventListeners(field) {
   });
 }
 
+function addSelectorOptions(countryCodes, id) {
+  const selectElement = document.createElement("select");
+  selectElement.classList.add("form-select");
+  selectElement.id = id;
+
+  countryCodes.forEach(function(country) {
+    const optionElement = document.createElement("option");
+    optionElement.value = `+${country.code}`;
+    optionElement.textContent = `+${country.code}`;
+    if (country.iso == "BR") optionElement.selected;
+    selectElement.appendChild(optionElement);
+  });
+
+  return selectElement;
+}
+
 function openPages(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   const input = document.getElementById(`input-${field}`);
-  const encodedInput = encodeURIComponent(input.value);
+  let encodedInput = encodeURIComponent(input.value);
   
   if (!encodedInput) {
     return;
+  }
+  if (field == "phone") {
+    const countryCode = document.getElementById("countryCodeSelector").value;
+    encodedInput = countryCode + encodedInput;
   }
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
@@ -81,6 +103,8 @@ function openPages(field) {
     }
   }
 }
+
+countryCodeDiv.appendChild(addSelectorOptions(countryData, "countryCodeSelector"));
 
 for (let dropdown of dropdowns) {
   createDropdownItems(dropdown, websiteData, dropdown.getAttribute('data-text'));
@@ -110,7 +134,6 @@ searchForm.addEventListener("submit", function(e) {
   e.preventDefault();
   for (const input of inputTexts) {
     const type = input.getAttribute("data-text");
-    console.log(type);
     if (isValid(type, input.value)) {
       openPages(type);
     } else {

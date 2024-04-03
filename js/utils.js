@@ -115,7 +115,7 @@ export function formatCPF(input) {
 }
 
 export function formatPlate(input) {
-  return onlyLetters(onlyDigits(input))
+  return onlyLetters(onlyDigits(input));
 }
 
 function isValidIP(ip) {
