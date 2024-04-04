@@ -2,7 +2,7 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
+    "info": ["name", "username", "cpf", "ip", "plate", "phone", "imei"],
     "quotes": true
   },
   "google": {
@@ -195,6 +195,24 @@
     "fullName": "Facebook Messenger",
     "url": "https://m.me/",
     "info": ["username", "phone"],
+    "quotes": false
+  },
+  "imei.info": {
+    "fullName": "IMEI info",
+    "url": "https://www.imei.info/?imei=",
+    "info": ["imei"],
+    "quotes": false
+  },
+  "imei.net": {
+    "fullName": "IMEI net",
+    "url": "https://imei.net/#",
+    "info": ["imei"],
+    "quotes": false
+  },
+  "consultaimei": {
+    "fullName": "Consulta Anatel",
+    "url": "https://www.consultaserialaparelho.com.br/public-web/home?cid=",
+    "info": ["imei"],
     "quotes": false
   }
 }

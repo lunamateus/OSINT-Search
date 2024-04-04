@@ -131,6 +131,10 @@ document.getElementById('input-phone').addEventListener("input", function(e) {
   e.target.value = toDigits(e.target.value);
 });
 
+document.getElementById('input-imei').addEventListener("input", function(e) {
+  e.target.value = toDigits(e.target.value);
+});
+
 document.getElementById('input-plate').addEventListener("input", function(e) {
   e.target.value = toAlphaNum(e.target.value);
   setValidation(e.target, e.target.value.length < 7 ? null : isValid("plate", e.target.value));

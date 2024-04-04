@@ -51,6 +51,8 @@ export function isValid(field, value) {
     return isValidPlate(value);
   } else if (field == 'phone') {
     return isValidPhone(value);
+  } else if (field == 'imei') {
+    return isValidIMEI(value);
   }
   return true;
 }
@@ -64,7 +66,11 @@ function isValidUsername(strName) {
 }
 
 function isValidPhone(str) {
-  return str.length > 4 || str.length < 18;
+  return str.length >= 4 || str.length <= 18;
+}
+
+function isValidIMEI(str) {
+  return str.length >= 14 || str.length <= 15;
 }
 
 function isValidCPF(strCPF) {

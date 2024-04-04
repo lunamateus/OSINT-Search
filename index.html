@@ -28,7 +28,7 @@
         </div>
         <label class="mt-3" for="input-name">Nome</label>
         <div class="input-group has-validation">
-          <input type="text" class="form-control" id="input-name" name="input-name" data-text="name" placeholder="Fulano da Silva" aria-describedby="validationNameFeedback" maxlength="100" autocomplete="on" autofocus>
+          <input type="text" class="form-control" id="input-name" name="input-name" data-text="name" placeholder="Fulano da Silva" aria-describedby="validationNameFeedback" maxlength="100" autocomplete="on">
           <div class="dropdown">
             <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonName" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Filtros</button>
             <ul class="dropdown-menu" id="checkboxName" data-text="name"></ul>
@@ -59,6 +59,17 @@
           </div>
           <div id="validationphoneFeedback" class="invalid-feedback">
             Verifique se o número digitado tem entre 4 e 18 dígitos.
+          </div>
+        </div>
+        <label class="mt-3" for="input-imei">IMEI</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" id="input-imei" name="input-imei" data-text="imei" placeholder="Digite *#06# no celular para ver o IMEI" aria-describedby="validationImeiFeedback" autocomplete="on">
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline-dark dropdown-toggle" id="buttonImei" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Filtros</button>
+            <ul class="dropdown-menu" id="checkboxImei" data-text="imei"></ul>
+          </div>
+          <div id="validationImeiFeedback" class="invalid-feedback">
+            Verifique se o IMEI digitado tem entre 14 e 15 digitos.
           </div>
         </div>
         <label class="mt-3" for="input-plate">Placa Veicular</label>
