@@ -46,14 +46,14 @@
         </div>
         <div class="mb-3">
           <label class="form-label" for="message">Mensagem</label>
-          <textarea class="form-control" id="message" name="message" type="text" placeholder="..." required></textarea>
+          <textarea class="form-control" id="message" name="message" type="text" placeholder="Escreva sua mensagem aqui." style="height: 150px;" required></textarea>
         </div>
         <div class="d-grid">
           <button class="btn btn-dark btn" type="submit" id="sendEmail">Enviar e-mail</button>
         </div>
       </form>
       <p id="form-status"></p>
-      <div class="toast" id="emailToast" role="alert" data-bs-placement="top" aria-live="assertive" aria-atomic="true">
+      <div class="toast" id="emailToast" role="alert" data-bs-placement="top" aria-live="assertive" aria-atomic="true" data-bs-delay="15000">
         <div class="toast-header">
           <img src="assets/images/icon-24px.png" class="rounded me-2" alt="Logo">
           <strong class="me-auto">OSINT Search</strong>
