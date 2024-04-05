@@ -45,6 +45,8 @@ export function isValid(field, value) {
     return isValidUsername(value);
   } else if (field == 'cpf') {
     return isValidCPF(value);
+  } else if (field == 'cnpj') {
+    return isValidCNPJ(value);
   } else if (field == 'ip') {
     return isValidIP(value);
   } else if (field == 'plate') {
@@ -105,6 +107,10 @@ function isValidCPF(strCPF) {
     return false;
   }
   return true;
+}
+
+function isValidCNPJ(str) {
+  return str.length >= 14;
 }
 
 export function formatCPF(input) {

@@ -2,37 +2,37 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "username", "cpf", "ip", "plate", "phone", "imei"],
+    "info": ["name", "username", "cpf", "ip", "plate", "phone", "imei", "cnpj", "email"],
     "quotes": true
   },
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
+    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone"],
     "quotes": true
   },
   "bing": {
     "fullName": "Bing",
     "url": "https://www.bing.com/search?q=",
-    "info": ["name", "username", "cpf", "ip", "plate", "phone"],
+    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone"],
     "quotes": true
   },
   "jusbrasil": {
     "fullName": "JusBrasil",
     "url": "https://www.jusbrasil.com.br/busca?q=",
-    "info": ["name", "cpf", "plate"],
+    "info": ["name", "cpf", "cnpj", "plate"],
     "quotes": true
   },
   "escavador": {
     "fullName": "Escavador",
     "url": "https://www.escavador.com/busca?qo=t&q=",
-    "info": ["name", "cpf", "plate"],
+    "info": ["name", "cpf", "cnpj", "plate"],
     "quotes": true
   },
   "transparencia": {
     "fullName": "Transparência GOV.BR",
     "url": "https://portaldatransparencia.gov.br/busca?termo=",
-    "info": ["name", "cpf", "plate"],
+    "info": ["name", "cpf", "cnpj", "plate"],
     "quotes": true
   },
   "tranparenciaDF": {
@@ -44,7 +44,7 @@
   "tranparenciaDF2": {
     "fullName": "Transparência DF",
     "url": "https://www.transparencia.df.gov.br/#/busca?q=",
-    "info": ["name", "cpf"],
+    "info": ["name", "cpf",  "cnpj"],
     "quotes": false
   },
   "facebook": {
@@ -98,7 +98,7 @@
   "registrobr": {
     "fullName": "Registro BR",
     "url": "https://registro.br/tecnologia/ferramentas/whois?search=",
-    "info": ["cpf", "ip"],
+    "info": ["cpf",  "cnpj", "ip"],
     "quotes": false
   },
   "placafipe": {
@@ -179,6 +179,12 @@
     "info": ["username"],
     "quotes": false
   },
+  "foursquare": {
+    "fullName": "Foursquare",
+    "url": "https://www.foursquare.com/",
+    "info": ["username"],
+    "quotes": false
+  },
   "whatsapp": {
     "fullName": "Whatsapp",
     "url": "https://wa.me/",
@@ -213,6 +219,48 @@
     "fullName": "Consulta Anatel",
     "url": "https://www.consultaserialaparelho.com.br/public-web/home?cid=",
     "info": ["imei"],
+    "quotes": false
+  },
+  "epieos": {
+    "fullName": "EPIEOS",
+    "url": "https://epieos.com/?q=",
+    "info": ["phone", "email"],
+    "quotes": false
+  },
+  "serasaexperian": {
+    "fullName": "Serasa Experian",
+    "url": "https://empresas.serasaexperian.com.br/consulta-gratis/",
+    "info": ["cnpj"],
+    "quotes": false
+  },
+  "cnpj.info": {
+    "fullName": "CNPJ INFO",
+    "url": "http://cnpj.info/",
+    "info": ["cnpj"],
+    "quotes": false
+  },
+  "cnpj.biz": {
+    "fullName": "CNPJ BIZ",
+    "url": "https://cnpj.biz/",
+    "info": ["cnpj"],
+    "quotes": false
+  },
+  "econodata": {
+    "fullName": "Econodata",
+    "url": "https://www.econodata.com.br/consulta-empresa/",
+    "info": ["cnpj"],
+    "quotes": false
+  },
+  "invertexto": {
+    "fullName": "Invertexto",
+    "url": "https://www.invertexto.com/consulta-cnpj/",
+    "info": ["cnpj"],
+    "quotes": false
+  },
+  "casadosdados": {
+    "fullName": "Casa dos dados",
+    "url": "hhttps://casadosdados.com.br/solucao/cnpj/",
+    "info": ["cnpj"],
     "quotes": false
   }
 }

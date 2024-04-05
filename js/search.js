@@ -140,6 +140,10 @@ document.getElementById('input-plate').addEventListener("input", function(e) {
   setValidation(e.target, e.target.value.length < 7 ? null : isValid("plate", e.target.value));
 });
 
+document.getElementById('input-cnpj').addEventListener("input", function(e) {
+  e.target.value = toDigits(e.target.value);
+});
+
 searchForm.addEventListener("submit", function(e) {
   e.preventDefault();
   for (const input of inputTexts) {
