@@ -8,13 +8,13 @@
   "google": {
     "fullName": "Google",
     "url": "https://www.google.com/search?q=",
-    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone"],
+    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone", "email"],
     "quotes": true
   },
   "bing": {
     "fullName": "Bing",
     "url": "https://www.bing.com/search?q=",
-    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone"],
+    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone", "email"],
     "quotes": true
   },
   "jusbrasil": {
@@ -50,7 +50,7 @@
   "facebook": {
     "fullName": "Facebook (Requer login)",
     "url": "https://www.facebook.com/search/top/?q=",
-    "info": ["name", "username"],
+    "info": ["name", "username", "email"],
     "quotes": false
   },
   "tiktok": {

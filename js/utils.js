@@ -55,6 +55,8 @@ export function isValid(field, value) {
     return isValidPhone(value);
   } else if (field == 'imei') {
     return isValidIMEI(value);
+  } else if (field == 'email') {
+    return isValidEmail(value);
   }
   return true;
 }
@@ -156,4 +158,9 @@ function isValidIP(ip) {
 function isValidPlate(plate) {
   const platePattern = /^[a-zA-Z]{3}\d{1}[a-zA-Z\d]{1}\d{2}$/;
   return platePattern.test(toAlphaNum(plate));
+}
+
+function isValidEmail(str) {
+  const platePattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]+)*$/;
+  return platePattern.test(str);
 }
