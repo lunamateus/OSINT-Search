@@ -18,23 +18,22 @@ function sortEntries(entries) {
 }
 
 function createDropdownItems(container, items, field) {
-  for (let key of items) {
-    const page = key[0];
-    const pageData = key[1];
+  for (let element of items) {
+    const key = element[0];
+    const value = element[1];
     const checkboxSection = document.createElement("li");
     checkboxSection.classList.add("dropdown-item");
 
     const checkboxInput = document.createElement("input");
     checkboxInput.type = "checkbox";
-    checkboxInput.classList.add("form-check-input");
-    checkboxInput.classList.add("me-1");
-    checkboxInput.id = `${page}-${field}-option`;
+    checkboxInput.classList.add("form-check-input", "me-1");
+    checkboxInput.id = `${key}-${field}-option`;
     checkboxInput.checked = true;
 
     const checkboxLabel = document.createElement("label");
     checkboxLabel.classList.add("form-check-label");
     checkboxLabel.htmlFor = checkboxInput.id;
-    checkboxLabel.textContent = pageData.fullName;
+    checkboxLabel.textContent = value.fullName;
 
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);

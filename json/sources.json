@@ -2,481 +2,744 @@
   "todos": {
     "fullName": "Todos",
     "url": "",
-    "info": ["name", "username", "cpf", "ip", "plate", "phone", "imei", "cnpj", "email"],
+    "info": [
+      "name",
+      "username",
+      "cpf",
+      "ip",
+      "plate",
+      "phone",
+      "imei",
+      "cnpj",
+      "email"
+    ],
     "quotes": true
-  },
-  "google": {
-    "fullName": "Google",
-    "url": "https://www.google.com/search?q=",
-    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone", "email"],
-    "quotes": true
-  },
-  "bing": {
-    "fullName": "Bing",
-    "url": "https://www.bing.com/search?q=",
-    "info": ["name", "username", "cpf", "cnpj", "ip", "plate", "phone", "email"],
-    "quotes": true
-  },
-  "jusbrasil": {
-    "fullName": "JusBrasil",
-    "url": "https://www.jusbrasil.com.br/busca?q=",
-    "info": ["name", "cpf", "cnpj", "plate"],
-    "quotes": true
-  },
-  "escavador": {
-    "fullName": "Escavador",
-    "url": "https://www.escavador.com/busca?qo=t&q=",
-    "info": ["name", "cpf", "cnpj", "plate"],
-    "quotes": true
-  },
-  "transparencia": {
-    "fullName": "Transparência GOV.BR",
-    "url": "https://portaldatransparencia.gov.br/busca?termo=",
-    "info": ["name", "cpf", "cnpj", "plate"],
-    "quotes": true
-  },
-  "tranparenciaDF": {
-    "fullName": "Transparência DF (servidores)",
-    "url": "https://www.transparencia.df.gov.br/#/servidores/remuneracao?nome=",
-    "info": ["name"],
-    "quotes": false
-  },
-  "tranparenciaDF2": {
-    "fullName": "Transparência DF",
-    "url": "https://www.transparencia.df.gov.br/#/busca?q=",
-    "info": ["name", "cpf",  "cnpj"],
-    "quotes": false
-  },
-  "facebook": {
-    "fullName": "Facebook (Requer login)",
-    "url": "https://www.facebook.com/search/top/?q=",
-    "info": ["name", "username", "email"],
-    "quotes": false
-  },
-  "tiktok": {
-    "fullName": "Tiktok (Requer login)",
-    "url": "https://www.tiktok.com/search?q=",
-    "info": ["name", "username"],
-    "quotes": false
-  },
-  "youtube": {
-    "fullName": "Youtube",
-    "url": "https://www.youtube.com/results?search_query=",
-    "info": ["name", "username"],
-    "quotes": false
-  },
-  "instagram": {
-    "fullName": "Instagram [Google]",
-    "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
-    "info": ["name", "username"],
-    "quotes": true
-  },
-  "iplocation": {
-    "fullName": "IP Location",
-    "url": "https://iplocation.io/ip/",
-    "info": ["ip"],
-    "quotes": false
-  },
-  "browserleaks": {
-    "fullName": "Browser Leaks",
-    "url": "https://browserleaks.com/ip/",
-    "info": ["ip"],
-    "quotes": false
-  },
-  "whois": {
-    "fullName": "Who.is",
-    "url": "https://who.is/whois-ip/ip-address/",
-    "info": ["ip"],
-    "quotes": false
-  },
-  "whoislacnic": {
-    "fullName": "Who.is lacnic",
-    "url": "https://query.milacnic.lacnic.net/search?id=",
-    "info": ["ip"],
-    "quotes": false
-  },
-  "registrobr": {
-    "fullName": "Registro BR",
-    "url": "https://registro.br/tecnologia/ferramentas/whois?search=",
-    "info": ["cpf",  "cnpj", "ip"],
-    "quotes": false
-  },
-  "placafipe": {
-    "fullName": "Placa FIPE",
-    "url": "https://placafipe.com/placa/",
-    "info": ["plate"],
-    "quotes": false
-  },
-  "keplaca": {
-    "fullName": "Ke Placa",
-    "url": "https://www.keplaca.com/placa/",
-    "info": ["plate"],
-    "quotes": false
-  },
-  "placaipva": {
-    "fullName": "Placa IPVA",
-    "url": "https://placaipva.com.br/placa/",
-    "info": ["plate"],
-    "quotes": false
-  },
-  "tinder": {
-    "fullName": "Tinder",
-    "url": "https://tinder.com/@",
-    "info": ["username"],
-    "quotes": false
-  },
-  "snapchat": {
-    "fullName": "Snapchat",
-    "url": "https://www.snapchat.com/add/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "Twitter": {
-    "fullName": "Twitter",
-    "url": "https://twitter.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "reddit": {
-    "fullName": "Reddit",
-    "url": "https://www.reddit.com/user/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "steam": {
-    "fullName": "Steam",
-    "url": "https://steamcommunity.com/id/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "github": {
-    "fullName": "Github",
-    "url": "https://github.com/search?q=",
-    "info": ["name", "username"],
-    "quotes": false
-  },
-  "twitch": {
-    "fullName": "Twitch",
-    "url": "https://www.twitch.tv/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "kwai": {
-    "fullName": "Kwai",
-    "url": "https://www.kwai.com/@",
-    "info": ["username"],
-    "quotes": false
-  },
-  "pinterest": {
-    "fullName": "Pinterest",
-    "url": "https://www.pinterest.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "foursquare": {
-    "fullName": "Foursquare",
-    "url": "https://www.foursquare.com/",
-    "info": ["username"],
-    "quotes": false
   },
   "8tracks": {
     "fullName": "8tracks",
     "url": "https://8tracks.com/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "9gag": {
     "fullName": "9GAG",
     "url": "https://www.9gag.com/u/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "about.me": {
     "fullName": "About.me",
     "url": "https://about.me/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "apple": {
     "fullName": "Apple Discussions",
     "url": "https://discussions.apple.com/profile/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "archiveofourown": {
-    "fullName": "Archive Of Our Own",
-    "url": "https://archiveofourown.org/users/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "archive.org": {
     "fullName": "Internet Archive",
     "url": "https://archive.org/details/@",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "archiveofourown": {
+    "fullName": "Archive Of Our Own",
+    "url": "https://archiveofourown.org/users/",
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "ask.fm": {
     "fullName": "Ask.fm",
     "url": "https://ask.fm/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "bandcamp": {
     "fullName": "Bandcamp",
     "url": "https://www.bandcamp.com/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
   "behance": {
     "fullName": "Behance",
     "url": "https://www.behance.net/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
+  },
+  "bing": {
+    "fullName": "Bing",
+    "url": "https://www.bing.com/search?q=",
+    "info": [
+      "name",
+      "username",
+      "cpf",
+      "cnpj",
+      "ip",
+      "plate",
+      "phone",
+      "email"
+    ],
+    "quotes": true
   },
   "bitcoinforum": {
     "fullName": "Bitcoin Forum",
     "url": "https://bitcoinforum.com/profile/",
-    "info": ["username"],
+    "info": [
+      "username"
+    ],
     "quotes": false
   },
-  "cgtrader": {
-    "fullName": "CGTrader",
-    "url": "https://www.cgtrader.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "chess": {
-    "fullName": "Chess.com",
-    "url": "https://www.chess.com/member/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "codecademy": {
-    "fullName": "Codecademy",
-    "url": "https://www.codecademy.com/profiles/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "codeforces": {
-    "fullName": "Codeforces",
-    "url": "https://codeforces.com/profile/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "duolingo": {
-    "fullName": "Duolingo",
-    "url": "https://www.duolingo.com/profile/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "freelancer": {
-    "fullName": "Freelancer",
-    "url": "https://www.freelancer.com/u/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "filmow": {
-    "fullName": "Filmow",
-    "url": "https://www.filmow.com/usuario/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "lichess": {
-    "fullName": "Lichess",
-    "url": "https://lichess.org/@/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "memrise": {
-    "fullName": "Memrise",
-    "url": "https://www.memrise.com/user/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "myanimelist": {
-    "fullName": "MyAnimeList",
-    "url": "https://myanimelist.net/profile/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "myspace": {
-    "fullName": "MySpace",
-    "url": "https://myspace.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "oracle": {
-    "fullName": "Oracle Community",
-    "url": "https://community.oracle.com/people/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "pastebin": {
-    "fullName": "Pastebin",
-    "url": "https://pastebin.com/u/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "periscope": {
-    "fullName": "Periscope",
-    "url": "https://www.periscope.tv/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "roblox": {
-    "fullName": "Roblox",
-    "url": "https://www.roblox.com/user.aspx?username=",
-    "info": ["username"],
-    "quotes": false
-  },
-  "runescape": {
-    "fullName": "RuneScape",
-    "url": "https://apps.runescape.com/runemetrics/app/overview/player/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "scribd": {
-    "fullName": "Scribd",
-    "url": "https://www.scribd.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "soundcloud": {
-    "fullName": "SoundCloud",
-    "url": "https://soundcloud.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "spotify": {
-    "fullName": "Spotify",
-    "url": "https://open.spotify.com/user/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "strava": {
-    "fullName": "Strava",
-    "url": "https://www.strava.com/athletes/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "tradingview": {
-    "fullName": "TradingView",
-    "url": "https://www.tradingview.com/u/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "trello": {
-    "fullName": "Trello",
-    "url": "https://trello.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "vsco": {
-    "fullName": "VSCO",
-    "url": "https://vsco.co/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "wordpress": {
-    "fullName": "WordPress",
-    "url": "https://profiles.wordpress.org/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "metacritic": {
-    "fullName": "Metacritic",
-    "url": "https://www.metacritic.com/user/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "note": {
-    "fullName": "Note",
-    "url": "https://note.com/",
-    "info": ["username"],
-    "quotes": false
-  },
-  "npm": {
-    "fullName": "npm",
-    "url": "https://www.npmjs.com/~",
-    "info": ["username"],
-    "quotes": false
-  },
-  "whatsapp": {
-    "fullName": "Whatsapp",
-    "url": "https://wa.me/",
-    "info": ["phone"],
-    "quotes": false
-  },
-  "telegram": {
-    "fullName": "Telegram",
-    "url": "https://t.me/",
-    "info": ["username", "phone"],
-    "quotes": false
-  },
-  "messenger": {
-    "fullName": "Facebook Messenger",
-    "url": "https://m.me/",
-    "info": ["username", "phone"],
-    "quotes": false
-  },
-  "imei.info": {
-    "fullName": "IMEI info",
-    "url": "https://www.imei.info/?imei=",
-    "info": ["imei"],
-    "quotes": false
-  },
-  "imei.net": {
-    "fullName": "IMEI net",
-    "url": "https://imei.net/#",
-    "info": ["imei"],
-    "quotes": false
-  },
-  "consultaimei": {
-    "fullName": "Consulta Anatel",
-    "url": "https://www.consultaserialaparelho.com.br/public-web/home?cid=",
-    "info": ["imei"],
-    "quotes": false
-  },
-  "epieos": {
-    "fullName": "EPIEOS",
-    "url": "https://epieos.com/?q=",
-    "info": ["phone", "email"],
-    "quotes": false
-  },
-  "serasaexperian": {
-    "fullName": "Serasa Experian",
-    "url": "https://empresas.serasaexperian.com.br/consulta-gratis/",
-    "info": ["cnpj"],
-    "quotes": false
-  },
-  "cnpj.info": {
-    "fullName": "CNPJ INFO",
-    "url": "http://cnpj.info/",
-    "info": ["cnpj"],
-    "quotes": false
-  },
-  "cnpj.biz": {
-    "fullName": "CNPJ BIZ",
-    "url": "https://cnpj.biz/",
-    "info": ["cnpj"],
-    "quotes": false
-  },
-  "econodata": {
-    "fullName": "Econodata",
-    "url": "https://www.econodata.com.br/consulta-empresa/",
-    "info": ["cnpj"],
-    "quotes": false
-  },
-  "invertexto": {
-    "fullName": "Invertexto",
-    "url": "https://www.invertexto.com/consulta-cnpj/",
-    "info": ["cnpj"],
+  "browserleaks": {
+    "fullName": "Browser Leaks",
+    "url": "https://browserleaks.com/ip/",
+    "info": [
+      "ip"
+    ],
     "quotes": false
   },
   "casadosdados": {
     "fullName": "Casa dos dados",
     "url": "hhttps://casadosdados.com.br/solucao/cnpj/",
-    "info": ["cnpj"],
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "cgtrader": {
+    "fullName": "CGTrader",
+    "url": "https://www.cgtrader.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "chess": {
+    "fullName": "Chess.com",
+    "url": "https://www.chess.com/member/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "cnpj.biz": {
+    "fullName": "CNPJ BIZ",
+    "url": "https://cnpj.biz/",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "cnpj.info": {
+    "fullName": "CNPJ INFO",
+    "url": "http://cnpj.info/",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "codecademy": {
+    "fullName": "Codecademy",
+    "url": "https://www.codecademy.com/profiles/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "codeforces": {
+    "fullName": "Codeforces",
+    "url": "https://codeforces.com/profile/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "consultaimei": {
+    "fullName": "Consulta Anatel",
+    "url": "https://www.consultaserialaparelho.com.br/public-web/home?cid=",
+    "info": [
+      "imei"
+    ],
+    "quotes": false
+  },
+  "datasus_estabelecimentos": {
+    "fullName": "DataSUS Estabelecimentos",
+    "url": "https://cnes.datasus.gov.br/pages/estabelecimentos/consulta.jsp?search=",
+    "info": [
+      "cpf",
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "datasus_profissional": {
+    "fullName": "DataSUS Profissionais",
+    "url": "https://cnes.datasus.gov.br/pages/profissionais/consulta.jsp?search=",
+    "info": [
+      "name",
+      "cpf",
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "duolingo": {
+    "fullName": "Duolingo",
+    "url": "https://www.duolingo.com/profile/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "econodata": {
+    "fullName": "Econodata",
+    "url": "https://www.econodata.com.br/consulta-empresa/",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "epieos": {
+    "fullName": "EPIEOS",
+    "url": "https://epieos.com/?q=",
+    "info": [
+      "phone",
+      "email"
+    ],
+    "quotes": false
+  },
+  "escavador": {
+    "fullName": "Escavador",
+    "url": "https://www.escavador.com/busca?qo=t&q=",
+    "info": [
+      "name",
+      "cpf",
+      "cnpj",
+      "plate"
+    ],
+    "quotes": true
+  },
+  "facebook": {
+    "fullName": "Facebook (Requer login)",
+    "url": "https://www.facebook.com/search/top/?q=",
+    "info": [
+      "name",
+      "username",
+      "email"
+    ],
+    "quotes": false
+  },
+  "filmow": {
+    "fullName": "Filmow",
+    "url": "https://www.filmow.com/usuario/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "foursquare": {
+    "fullName": "Foursquare",
+    "url": "https://www.foursquare.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "freelancer": {
+    "fullName": "Freelancer",
+    "url": "https://www.freelancer.com/u/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "github": {
+    "fullName": "Github",
+    "url": "https://github.com/search?q=",
+    "info": [
+      "name",
+      "username"
+    ],
+    "quotes": false
+  },
+  "google": {
+    "fullName": "Google",
+    "url": "https://www.google.com/search?q=",
+    "info": [
+      "name",
+      "username",
+      "cpf",
+      "cnpj",
+      "ip",
+      "plate",
+      "phone",
+      "email"
+    ],
+    "quotes": true
+  },
+  "imei.info": {
+    "fullName": "IMEI info",
+    "url": "https://www.imei.info/?imei=",
+    "info": [
+      "imei"
+    ],
+    "quotes": false
+  },
+  "imei.net": {
+    "fullName": "IMEI net",
+    "url": "https://imei.net/#",
+    "info": [
+      "imei"
+    ],
+    "quotes": false
+  },
+  "instagram": {
+    "fullName": "Instagram [Google]",
+    "url": "https://www.google.com/search?q=site%3Ainstagram.com+",
+    "info": [
+      "name",
+      "username"
+    ],
+    "quotes": true
+  },
+  "intelx.io": {
+    "fullName": "IntelX.io",
+    "url": "https://intelx.io/?s=",
+    "info": [
+      "email"
+    ],
+    "quotes": false
+  },
+  "invertexto": {
+    "fullName": "Invertexto",
+    "url": "https://www.invertexto.com/consulta-cnpj/",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "iplocation": {
+    "fullName": "IP Location",
+    "url": "https://iplocation.io/ip/",
+    "info": [
+      "ip"
+    ],
+    "quotes": false
+  },
+  "jusbrasil": {
+    "fullName": "JusBrasil",
+    "url": "https://www.jusbrasil.com.br/busca?q=",
+    "info": [
+      "name",
+      "cpf",
+      "cnpj",
+      "plate"
+    ],
+    "quotes": true
+  },
+  "keplaca": {
+    "fullName": "Ke Placa",
+    "url": "https://www.keplaca.com/placa/",
+    "info": [
+      "plate"
+    ],
+    "quotes": false
+  },
+  "kwai": {
+    "fullName": "Kwai",
+    "url": "https://www.kwai.com/@",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "lichess": {
+    "fullName": "Lichess",
+    "url": "https://lichess.org/@/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "memrise": {
+    "fullName": "Memrise",
+    "url": "https://www.memrise.com/user/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "messenger": {
+    "fullName": "Facebook Messenger",
+    "url": "https://m.me/",
+    "info": [
+      "username",
+      "phone"
+    ],
+    "quotes": false
+  },
+  "metacritic": {
+    "fullName": "Metacritic",
+    "url": "https://www.metacritic.com/user/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "myanimelist": {
+    "fullName": "MyAnimeList",
+    "url": "https://myanimelist.net/profile/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "myspace": {
+    "fullName": "MySpace",
+    "url": "https://myspace.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "namevine": {
+    "fullName": "Namevine",
+    "url": "https://namevine.com/#/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "note": {
+    "fullName": "Note",
+    "url": "https://note.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "npm": {
+    "fullName": "npm",
+    "url": "https://www.npmjs.com/~",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "oracle": {
+    "fullName": "Oracle Community",
+    "url": "https://community.oracle.com/people/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "pastebin": {
+    "fullName": "Pastebin",
+    "url": "https://pastebin.com/u/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "peekyou": {
+    "fullName": "Peekyou",
+    "url": "https://www.peekyou.com/username=",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "periscope": {
+    "fullName": "Periscope",
+    "url": "https://www.periscope.tv/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "pinterest": {
+    "fullName": "Pinterest",
+    "url": "https://www.pinterest.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "placafipe": {
+    "fullName": "Placa FIPE",
+    "url": "https://placafipe.com/placa/",
+    "info": [
+      "plate"
+    ],
+    "quotes": false
+  },
+  "placaipva": {
+    "fullName": "Placa IPVA",
+    "url": "https://placaipva.com.br/placa/",
+    "info": [
+      "plate"
+    ],
+    "quotes": false
+  },
+  "reddit": {
+    "fullName": "Reddit",
+    "url": "https://www.reddit.com/user/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "registrobr": {
+    "fullName": "Registro BR",
+    "url": "https://registro.br/tecnologia/ferramentas/whois?search=",
+    "info": [
+      "cpf",
+      "cnpj",
+      "ip"
+    ],
+    "quotes": false
+  },
+  "roblox": {
+    "fullName": "Roblox",
+    "url": "https://www.roblox.com/user.aspx?username=",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "runescape": {
+    "fullName": "RuneScape",
+    "url": "https://apps.runescape.com/runemetrics/app/overview/player/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "scribd": {
+    "fullName": "Scribd",
+    "url": "https://www.scribd.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "serasaexperian": {
+    "fullName": "Serasa Experian",
+    "url": "https://empresas.serasaexperian.com.br/consulta-gratis/",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "snapchat": {
+    "fullName": "Snapchat",
+    "url": "https://www.snapchat.com/add/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "soundcloud": {
+    "fullName": "SoundCloud",
+    "url": "https://soundcloud.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "spotify": {
+    "fullName": "Spotify",
+    "url": "https://open.spotify.com/user/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "steam": {
+    "fullName": "Steam",
+    "url": "https://steamcommunity.com/id/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "strava": {
+    "fullName": "Strava",
+    "url": "https://www.strava.com/athletes/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "sync.me": {
+    "fullName": "Sync Me",
+    "url": "https://sync.me/search/?number=",
+    "info": [
+      "phone"
+    ],
+    "quotes": false
+  },
+  "telegram": {
+    "fullName": "Telegram",
+    "url": "https://t.me/",
+    "info": [
+      "username",
+      "phone"
+    ],
+    "quotes": false
+  },
+  "tiktok": {
+    "fullName": "Tiktok (Requer login)",
+    "url": "https://www.tiktok.com/search?q=",
+    "info": [
+      "name",
+      "username"
+    ],
+    "quotes": false
+  },
+  "tinder": {
+    "fullName": "Tinder",
+    "url": "https://tinder.com/@",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "tradingview": {
+    "fullName": "TradingView",
+    "url": "https://www.tradingview.com/u/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "tranparenciaDF": {
+    "fullName": "Transparência DF (servidores)",
+    "url": "https://www.transparencia.df.gov.br/#/servidores/remuneracao?nome=",
+    "info": [
+      "name"
+    ],
+    "quotes": false
+  },
+  "tranparenciaDF2": {
+    "fullName": "Transparência DF",
+    "url": "https://www.transparencia.df.gov.br/#/busca?q=",
+    "info": [
+      "name",
+      "cpf",
+      "cnpj"
+    ],
+    "quotes": false
+  },
+  "transparencia": {
+    "fullName": "Transparência GOV.BR",
+    "url": "https://portaldatransparencia.gov.br/busca?termo=",
+    "info": [
+      "name",
+      "cpf",
+      "cnpj",
+      "plate"
+    ],
+    "quotes": true
+  },
+  "trello": {
+    "fullName": "Trello",
+    "url": "https://trello.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "twitch": {
+    "fullName": "Twitch",
+    "url": "https://www.twitch.tv/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "Twitter": {
+    "fullName": "Twitter",
+    "url": "https://twitter.com/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "vsco": {
+    "fullName": "VSCO",
+    "url": "https://vsco.co/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "webmii": {
+    "fullName": "Webmii",
+    "url": "https://webmii.com/people?n=",
+    "info": [
+      "name"
+    ],
+    "quotes": true
+  },
+  "whatsapp": {
+    "fullName": "Whatsapp",
+    "url": "https://wa.me/",
+    "info": [
+      "phone"
+    ],
+    "quotes": false
+  },
+  "whois": {
+    "fullName": "Who.is",
+    "url": "https://who.is/whois-ip/ip-address/",
+    "info": [
+      "ip"
+    ],
+    "quotes": false
+  },
+  "whoislacnic": {
+    "fullName": "Who.is lacnic",
+    "url": "https://query.milacnic.lacnic.net/search?id=",
+    "info": [
+      "ip"
+    ],
+    "quotes": false
+  },
+  "wordpress": {
+    "fullName": "WordPress",
+    "url": "https://profiles.wordpress.org/",
+    "info": [
+      "username"
+    ],
+    "quotes": false
+  },
+  "youtube": {
+    "fullName": "Youtube",
+    "url": "https://www.youtube.com/results?search_query=",
+    "info": [
+      "name",
+      "username"
+    ],
     "quotes": false
   }
 }
