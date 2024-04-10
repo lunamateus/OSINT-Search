@@ -7,11 +7,20 @@ const countryCodeDiv = document.getElementById("countryCodeDiv");
 const websiteData = await loadData('sources');
 const countryData = await loadData('countryCodes');
 
+function filterJsonByAttribute(json, attribute) {
+  return Object.entries(json).filter(([key, value]) => value.info.includes(attribute));
+}
+
+function sortEntries(entries) {
+  const [firstEntry, ...restEntries] = entries;
+  const sortedRestEntries = restEntries.sort(([aKey], [bKey]) => aKey.localeCompare(bKey));
+  return [firstEntry, ...sortedRestEntries];
+}
+
 function createDropdownItems(container, items, field) {
-  for (let key in items) {
-    if (!items[key].info.includes(field)) {
-      continue;
-    }
+  for (let key of items) {
+    const page = key[0];
+    const pageData = key[1];
     const checkboxSection = document.createElement("li");
     checkboxSection.classList.add("dropdown-item");
 
@@ -19,13 +28,13 @@ function createDropdownItems(container, items, field) {
     checkboxInput.type = "checkbox";
     checkboxInput.classList.add("form-check-input");
     checkboxInput.classList.add("me-1");
-    checkboxInput.id = `${key}-${field}-option`;
+    checkboxInput.id = `${page}-${field}-option`;
     checkboxInput.checked = true;
 
     const checkboxLabel = document.createElement("label");
     checkboxLabel.classList.add("form-check-label");
     checkboxLabel.htmlFor = checkboxInput.id;
-    checkboxLabel.textContent = items[key].fullName;
+    checkboxLabel.textContent = pageData.fullName;
 
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);
@@ -91,7 +100,7 @@ function openPages(field) {
     }
     encodedInput = encodeURIComponent(inputValue);
   }
-
+  console.log(checkboxes);
   for (let i = 1; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       try {
@@ -109,7 +118,10 @@ function openPages(field) {
 countryCodeDiv.appendChild(addSelectorOptions(countryData, "countryCodeSelector"));
 
 for (let dropdown of dropdowns) {
-  createDropdownItems(dropdown, websiteData, dropdown.getAttribute('data-text'));
+  const field = dropdown.getAttribute('data-text');
+  let items = filterJsonByAttribute(websiteData, field);
+  items = sortEntries(items);
+  createDropdownItems(dropdown, items, field);
 }
 
 for (let input = 1; input < inputTexts.length; input++) {
