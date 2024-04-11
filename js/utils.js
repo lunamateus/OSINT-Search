@@ -74,7 +74,7 @@ function isValidPhone(str) {
 }
 
 function isValidIMEI(str) {
-  return str.length >= 14 || str.length <= 15;
+  return str.length >= 14 && str.length <= 15;
 }
 
 function isValidCPF(strCPF) {

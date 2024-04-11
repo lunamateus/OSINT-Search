@@ -17,10 +17,36 @@ function sortEntries(entries) {
   return [firstEntry, ...sortedRestEntries];
 }
 
+function addInputListenerAndFormat(elementId, formatFunction, validationFunction) {
+  const inputElement = document.getElementById(elementId);
+  inputElement.addEventListener("input", function(e) {
+    const formattedValue = formatFunction(e.target.value);
+    e.target.value = formattedValue;
+    if (validationFunction) {
+      setValidation(e.target, validationFunction(formattedValue));
+    }
+  });
+}
+
+function getFormatAndValidationFunctions(field) {
+  switch (field) {
+    case 'cpf':
+      return { formatFunction: formatCPF, validationFunction: value => value.length < 14 ? null : isValid(field, value) };
+    case 'username':
+      return { formatFunction: formatUsername };
+    case 'phone':
+    case 'imei':
+    case 'cnpj':
+      return { formatFunction: toDigits };
+    case 'plate':
+      return { formatFunction: toAlphaNum, validationFunction: value => value.length < 7 ? null : isValid(field, value) };
+    default:
+      return { formatFunction: null, validationFunction: null };
+  }
+}
+
 function createDropdownItems(container, items, field) {
-  for (let element of items) {
-    const key = element[0];
-    const value = element[1];
+  items.forEach(([key, value]) => {
     const checkboxSection = document.createElement("li");
     checkboxSection.classList.add("dropdown-item");
 
@@ -38,8 +64,7 @@ function createDropdownItems(container, items, field) {
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);
     container.appendChild(checkboxSection);
-  }
-  createEventListeners(field);
+  });
 }
 
 function createEventListeners(field) {
@@ -70,99 +95,82 @@ function createEventListeners(field) {
   });
 }
 
-function addSelectorOptions(countryCodes, id) {
-  const selectElement = document.createElement("select");
-  selectElement.classList.add("form-select");
-  selectElement.id = id;
-
-  countryCodes.forEach(function(country) {
-    const optionElement = document.createElement("option");
-    optionElement.value = `+${country.code}`;
-    optionElement.textContent = `+${country.code}`;
-    if (country.iso == "BR") optionElement.selected;
-    selectElement.appendChild(optionElement);
-  });
-
-  return selectElement;
-}
-
 function openPages(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   let inputValue = document.getElementById(`input-${field}`).value;
   let encodedInput = "";
 
-  if (!inputValue) {
-    return;
-  } else {
-    if (field == "phone") {
-      inputValue = document.getElementById("countryCodeSelector").value + inputValue;
-    }
-    encodedInput = encodeURIComponent(inputValue);
+  if (!inputValue) return;
+
+  if (field === "phone") {
+    inputValue = document.getElementById("countryCodeSelector").value + inputValue;
   }
-  console.log(checkboxes);
-  for (let i = 1; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      try {
-        const websiteName = checkboxes[i].id.split("-")[0];
-        const website = websiteData[websiteName];
-        window.open(createURL(website.url, encodedInput, website.quotes), "_blank");
-      } catch (error) {
-        console.log(error);
-        continue;
-      }
+  
+  encodedInput = encodeURIComponent(inputValue);
+
+  checkboxes.forEach((checkbox, index) => {
+    if (index === 0 || !checkbox.checked) return;
+
+    try {
+      const websiteName = checkbox.id.split("-")[0];
+      const website = websiteData[websiteName];
+      window.open(createURL(website.url, encodedInput, website.quotes), "_blank");
+    } catch (error) {
+      console.error(error);
     }
-  }
-}
-
-countryCodeDiv.appendChild(addSelectorOptions(countryData, "countryCodeSelector"));
-
-for (let dropdown of dropdowns) {
-  const field = dropdown.getAttribute('data-text');
-  let items = filterJsonByAttribute(websiteData, field);
-  items = sortEntries(items);
-  createDropdownItems(dropdown, items, field);
-}
-
-for (let input = 1; input < inputTexts.length; input++) {
-  inputTexts[input].addEventListener("blur", function() {
-    setValidation(this, !this.value.length ? null : isValid(this.getAttribute("data-text"), this.value));
   });
 }
 
-document.getElementById('input-cpf').addEventListener("input", function(e) {
-  e.target.value = formatCPF(e.target.value);
-  setValidation(e.target, e.target.value.length < 14 ? null : isValid("cpf", e.target.value));
-});
+function initializeEventListeners() {
+  inputTexts.forEach(input => {
+    const field = input.getAttribute("data-text");
+    const formatAndValidation = getFormatAndValidationFunctions(field);
+    input.addEventListener("blur", function() {
+      setValidation(this, !this.value.length ? null : isValid(field, this.value));
+    });
+    addInputListenerAndFormat(`input-${field}`, formatAndValidation.formatFunction, formatAndValidation.validationFunction);
+  });
 
-document.getElementById('input-username').addEventListener("input", function(e) {
-  e.target.value = formatUsername(e.target.value);
-});
-
-document.getElementById('input-phone').addEventListener("input", function(e) {
-  e.target.value = toDigits(e.target.value);
-});
-
-document.getElementById('input-imei').addEventListener("input", function(e) {
-  e.target.value = toDigits(e.target.value);
-});
-
-document.getElementById('input-plate').addEventListener("input", function(e) {
-  e.target.value = toAlphaNum(e.target.value);
-  setValidation(e.target, e.target.value.length < 7 ? null : isValid("plate", e.target.value));
-});
-
-document.getElementById('input-cnpj').addEventListener("input", function(e) {
-  e.target.value = toDigits(e.target.value);
-});
-
-searchForm.addEventListener("submit", function(e) {
-  e.preventDefault();
-  for (const input of inputTexts) {
-    const type = input.getAttribute("data-text");
-    if (isValid(type, input.value)) {
-      openPages(type);
-    } else {
-      input.focus();
+  searchForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    for (const input of inputTexts) {
+      const type = input.getAttribute("data-text");
+      if (isValid(type, input.value)) {
+        openPages(type);
+      } else {
+        input.focus();
+        break;
+      }
     }
-  }
-});
+  });
+}
+
+function initializeCountrySelector() {
+  const countryCodeSelector = document.createElement("select");
+  countryCodeSelector.classList.add("form-select");
+  countryCodeSelector.id = "countryCodeSelector";
+
+  countryData.forEach(country => {
+    const option = document.createElement("option");
+    option.value = `+${country.code}`;
+    option.textContent = `+${country.code}`;
+    if (country.iso === "BR") option.selected = true;
+    countryCodeSelector.appendChild(option);
+  });
+
+  countryCodeDiv.appendChild(countryCodeSelector);
+}
+
+function initializeDropdowns() {
+  dropdowns.forEach(dropdown => {
+    const field = dropdown.getAttribute('data-text');
+    const items = filterJsonByAttribute(websiteData, field);
+    const sortedItems = sortEntries(items);
+    createDropdownItems(dropdown, sortedItems, field);
+    createEventListeners(field);
+  });
+}
+
+initializeDropdowns();
+initializeCountrySelector();
+initializeEventListeners();
