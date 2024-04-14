@@ -28,22 +28,34 @@ function addInputListenerAndFormat(elementId, formatFunction, validationFunction
   });
 }
 
-function getFormatAndValidationFunctions(field) {
+function getFormatFunction(field) {
   switch (field) {
     case 'cpf':
-      return { formatFunction: formatCPF, validationFunction: value => value.length < 14 ? null : isValid(field, value) };
+      return formatCPF;
     case 'username':
-      return { formatFunction: formatUsername };
+      return formatUsername;
     case 'phone':
     case 'imei':
     case 'cnpj':
-      return { formatFunction: toDigits };
+      return toDigits;
     case 'plate':
-      return { formatFunction: toAlphaNum, validationFunction: value => value.length < 7 ? null : isValid(field, value) };
+      return toAlphaNum;
     default:
-      return { formatFunction: null, validationFunction: null };
+      return (value) => value;
   }
 }
+
+function getValidationFunction(field) {
+  switch (field) {
+    case 'cpf':
+      return (value) => value.length < 14 ? null : isValid(field, value);
+    case 'plate':
+      return (value) => value.length < 7 ? null : isValid(field, value);
+    default:
+      return null;
+  }
+}
+
 
 function createDropdownItems(container, items, field) {
   items.forEach(([key, value]) => {
@@ -124,24 +136,29 @@ function openPages(field) {
 function initializeEventListeners() {
   inputTexts.forEach(input => {
     const field = input.getAttribute("data-text");
-    const formatAndValidation = getFormatAndValidationFunctions(field);
+    const formatFunction = getFormatFunction(field);
+    const validationFunction = getValidationFunction(field);
     input.addEventListener("blur", function() {
       setValidation(this, !this.value.length ? null : isValid(field, this.value));
     });
-    addInputListenerAndFormat(`input-${field}`, formatAndValidation.formatFunction, formatAndValidation.validationFunction);
+    addInputListenerAndFormat(`input-${field}`, formatFunction, validationFunction);
   });
 
   searchForm.addEventListener("submit", function(e) {
     e.preventDefault();
     for (const input of inputTexts) {
-      const type = input.getAttribute("data-text");
-      if (isValid(type, input.value)) {
-        openPages(type);
+      if (input.value) {
+        const type = input.getAttribute("data-text");
+        if (isValid(type, input.value)) {
+          openPages(type);
+        } else {
+          input.focus();
+        }
       } else {
-        input.focus();
-        break;
+        continue;
       }
     }
+
   });
 }
 
