@@ -111,7 +111,7 @@ function createEventListeners(field) {
 }
 
 function openPages(field) {
-  const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
+  const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']:checked`);
   let inputValue = document.getElementById(`input-${field}`).value;
   let encodedInput = "";
 
@@ -120,14 +120,12 @@ function openPages(field) {
   if (field === "phone") {
     inputValue = document.getElementById("countryCodeSelector").value + inputValue;
   }
-  
   encodedInput = encodeURIComponent(inputValue);
 
-  checkboxes.forEach((checkbox, index) => {
-    if (index === 0 || !checkbox.checked) return;
-
+  checkboxes.forEach((checkbox) => {
     try {
       const websiteName = checkbox.id.split("-")[0];
+      if (websiteName == "todos") return;
       const website = websiteData[websiteName];
       window.open(createURL(website.url, encodedInput, website.quotes), "_blank");
     } catch (error) {
