@@ -72,6 +72,9 @@ function createDropdownItems(container, items, field) {
     checkboxLabel.classList.add("form-check-label");
     checkboxLabel.htmlFor = checkboxInput.id;
     checkboxLabel.textContent = value.fullName;
+    if (value.fullName == "Todos") {
+      checkboxLabel.style.fontWeight = "bold";
+    }
 
     checkboxSection.appendChild(checkboxInput);
     checkboxSection.appendChild(checkboxLabel);

@@ -500,6 +500,14 @@
     ],
     "quotes": false
   },
+  "receitafederal": {
+    "fullName": "RFB - Situação Cadastral",
+    "url": "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp?cnpj=",
+    "info": [
+      "cnpj"
+    ],
+    "quotes": false
+  },
   "reddit": {
     "fullName": "Reddit",
     "url": "https://www.reddit.com/user/",
