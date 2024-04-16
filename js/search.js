@@ -1,3 +1,4 @@
+import { createDropdownItems } from './createDropdownItems.js';
 import {loadData, createURL, formatCPF, formatUsername, toDigits, toAlphaNum, setValidation, isValid} from './utils.js';
 
 const searchForm = document.getElementById('search-form');
@@ -56,33 +57,7 @@ function getValidationFunction(field) {
   }
 }
 
-
-function createDropdownItems(container, items, field) {
-  items.forEach(([key, value]) => {
-    const checkboxSection = document.createElement("li");
-    checkboxSection.classList.add("dropdown-item");
-
-    const checkboxInput = document.createElement("input");
-    checkboxInput.type = "checkbox";
-    checkboxInput.classList.add("form-check-input", "me-1");
-    checkboxInput.id = `${key}-${field}-option`;
-    checkboxInput.checked = true;
-
-    const checkboxLabel = document.createElement("label");
-    checkboxLabel.classList.add("form-check-label");
-    checkboxLabel.htmlFor = checkboxInput.id;
-    checkboxLabel.textContent = value.fullName;
-    if (value.fullName == "Todos") {
-      checkboxLabel.style.fontWeight = "bold";
-    }
-
-    checkboxSection.appendChild(checkboxInput);
-    checkboxSection.appendChild(checkboxLabel);
-    container.appendChild(checkboxSection);
-  });
-}
-
-function createEventListeners(field) {
+function createEventListenersOnCheckboxes(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
   const selectAllCheckbox = document.getElementById(`todos-${field}-option`);
 
@@ -124,6 +99,7 @@ function openPages(field) {
 
   checkboxes.forEach((checkbox) => {
     try {
+      console.log(checkbox);
       const websiteName = checkbox.id.split("-")[0];
       if (websiteName == "todos") return;
       const website = websiteData[websiteName];
@@ -159,7 +135,6 @@ function initializeEventListeners() {
         continue;
       }
     }
-
   });
 }
 
@@ -185,7 +160,7 @@ function initializeDropdowns() {
     const items = filterJsonByAttribute(websiteData, field);
     const sortedItems = sortEntries(items);
     createDropdownItems(dropdown, sortedItems, field);
-    createEventListeners(field);
+    createEventListenersOnCheckboxes(field);
   });
 }
 
