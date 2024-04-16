@@ -1,12 +1,12 @@
 import { createDropdownItems } from './createDropdownItems.js';
 import {loadData, createURL, formatCPF, formatUsername, toDigits, toAlphaNum, setValidation, isValid} from './utils.js';
 
-const searchForm = document.getElementById('search-form');
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
 const inputTexts = document.querySelectorAll("input[type='text']");
 const countryCodeDiv = document.getElementById("countryCodeDiv");
 const websiteData = await loadData('sources');
 const countryData = await loadData('countryCodes');
+let linksToOpen = [];
 
 function filterJsonByAttribute(json, attribute) {
   return Object.entries(json).filter(([key, value]) => value.info.includes(attribute));
@@ -85,10 +85,11 @@ function createEventListenersOnCheckboxes(field) {
   });
 }
 
-function openPages(field) {
+function getLinks(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']:checked`);
   let inputValue = document.getElementById(`input-${field}`).value;
   let encodedInput = "";
+  let links = [];
 
   if (!inputValue) return;
 
@@ -99,15 +100,35 @@ function openPages(field) {
 
   checkboxes.forEach((checkbox) => {
     try {
-      console.log(checkbox);
       const websiteName = checkbox.id.split("-")[0];
       if (websiteName == "todos") return;
       const website = websiteData[websiteName];
-      window.open(createURL(website.url, encodedInput, website.quotes), "_blank");
+      links.push(createURL(website.url, encodedInput, website.quotes));
     } catch (error) {
       console.error(error);
     }
   });
+  return links;
+}
+
+function openLinks(links) {
+  links.forEach(link => {
+    window.open(link, "_blank");
+  });
+}
+
+function openConfirmDialog() {
+  const searchModal = new bootstrap.Modal(document.getElementById('searchModal'));
+  const confirmText = document.getElementById("confirmText");
+  const sourcesCount = linksToOpen.length
+  document.getElementById("selectedSourcesCount").innerHTML = sourcesCount;
+  if (sourcesCount == 1) {
+    confirmText.innerHTML = "fonte de pesquisa que abrirá em outra aba."
+  } else {
+    confirmText.innerHTML = "fontes de pesquisa que abrirão em outras abas."
+  }
+
+  if (sourcesCount > 0) searchModal.show();
 }
 
 function initializeEventListeners() {
@@ -121,20 +142,24 @@ function initializeEventListeners() {
     addInputListenerAndFormat(`input-${field}`, formatFunction, validationFunction);
   });
 
-  searchForm.addEventListener("submit", function(e) {
+  document.getElementById('search-button').addEventListener('click', function(e) {
     e.preventDefault();
-    for (const input of inputTexts) {
+    linksToOpen = [];
+  	for (const input of inputTexts) {
       if (input.value) {
         const type = input.getAttribute("data-text");
         if (isValid(type, input.value)) {
-          openPages(type);
-        } else {
-          input.focus();
+          linksToOpen.push(...getLinks(type));
         }
-      } else {
-        continue;
       }
     }
+    openConfirmDialog();
+  });
+
+  document.getElementById('confirmSearchBtn').addEventListener('click', function() {
+    openLinks(linksToOpen);
+    const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+    searchModal.hide();
   });
 }
 

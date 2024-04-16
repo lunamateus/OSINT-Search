@@ -185,7 +185,24 @@
           </div>
         </div>
         <div class="mt-3 text-center">
-          <button type="submit" class="btn btn-dark" id="search-button">Pesquisar</button>
+          <button class="btn btn-dark" id="search-button">Pesquisar</button>
+        </div>
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Confirme a sua busca</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Você selecionou <span id="selectedSourcesCount"></span><p id="confirmText"></p> Continuar?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmSearchBtn">OK</button>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
       <div class="container mt-5 text-center">
