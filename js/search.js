@@ -119,16 +119,24 @@ function openLinks(links) {
 
 function openConfirmDialog() {
   const searchModal = new bootstrap.Modal(document.getElementById('searchModal'));
-  const confirmText = document.getElementById("confirmText");
   const sourcesCount = linksToOpen.length
-  document.getElementById("selectedSourcesCount").innerHTML = sourcesCount;
-  if (sourcesCount == 1) {
-    confirmText.innerHTML = "fonte de pesquisa que abrirá em outra aba."
-  } else {
-    confirmText.innerHTML = "fontes de pesquisa que abrirão em outras abas."
-  }
 
-  if (sourcesCount > 0) searchModal.show();
+  if (sourcesCount > 0) {
+    console.log("search some");
+    const confirmText = document.getElementById("confirmText");
+    document.getElementById("selectedSourcesCount").innerHTML = sourcesCount;
+    if (sourcesCount == 1) {
+      confirmText.innerHTML = "fonte de pesquisa que abrirá em outra aba"
+    } else {
+      confirmText.innerHTML = "fontes de pesquisa que abrirão em outras abas"
+    }
+    searchModal.show();
+  } else {
+    console.log("no search");
+    const toast = document.getElementById('nothingToSearchToast');
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+  }
 }
 
 function initializeEventListeners() {
