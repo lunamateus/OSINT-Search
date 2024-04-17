@@ -46,7 +46,7 @@ function createEventListenersOnCheckboxes(field) {
           const currentCheckbox = checkboxes[i];
           if (currentCheckbox !== selectAllCheckbox && !currentCheckbox.checked) {
             allChecked = false;
-            return;
+            break;
           }
         }
         selectAllCheckbox.checked = allChecked;
