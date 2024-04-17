@@ -13,15 +13,43 @@ export function createURL(domain, path, quotes = true) {
   return quotes ? `${domain}"${path}"` : `${domain}${path}`;
 }
 
-export function toDigits(str) {
+export function getFormatFunction(field) {
+  switch (field) {
+    case 'cpf':
+      return formatCPF;
+    case 'username':
+      return formatUsername;
+    case 'phone':
+    case 'imei':
+    case 'cnpj':
+      return toDigits;
+    case 'plate':
+      return toAlphaNum;
+    default:
+      return (value) => value;
+  }
+}
+
+export function getValidationFunction(field) {
+  switch (field) {
+    case 'cpf':
+      return (value) => value.length < 14 ? null : isValid(field, value);
+    case 'plate':
+      return (value) => value.length < 7 ? null : isValid(field, value);
+    default:
+      return null;
+  }
+}
+
+function toDigits(str) {
   return str.replace(/\D+/g, '');
 }
 
-export function toAlphaNum(str) {
+function toAlphaNum(str) {
   return str.replace(/[^a-zA-Z0-9]/g, '');
 }
 
-export function formatUsername(str) {
+function formatUsername(str) {
   return str.replace(/[\s/]/g, ''); //removes whitespaces and slashes
 }
 
@@ -39,26 +67,28 @@ export function setValidation(element, isValid = null) {
 }
 
 export function isValid(field, value) {
-  if (field == 'name') {
-    return isValidName(value);
-  } else if (field == 'username') {
-    return isValidUsername(value);
-  } else if (field == 'cpf') {
-    return isValidCPF(value);
-  } else if (field == 'cnpj') {
-    return isValidCNPJ(value);
-  } else if (field == 'ip') {
-    return isValidIP(value);
-  } else if (field == 'plate') {
-    return isValidPlate(value);
-  } else if (field == 'phone') {
-    return isValidPhone(value);
-  } else if (field == 'imei') {
-    return isValidIMEI(value);
-  } else if (field == 'email') {
-    return isValidEmail(value);
+  switch (field) {
+    case 'name':
+      return isValidName(value);
+    case 'username':
+      return isValidUsername(value);
+    case 'cpf':
+      return isValidCPF(value);
+    case 'cnpj':
+      return isValidCNPJ(value);
+    case 'ip':
+      return isValidIP(value);
+    case 'plate':
+      return isValidPlate(value);
+    case 'phone':
+      return isValidPhone(value);
+    case 'imei':
+      return isValidIMEI(value);
+    case 'email':
+      return isValidEmail(value);
+    default:
+      return true;
   }
-  return true;
 }
 
 function isValidName(strName) {
@@ -70,7 +100,7 @@ function isValidUsername(strName) {
 }
 
 function isValidPhone(str) {
-  return str.length >= 4 || str.length <= 18;
+  return str.length >= 4 && str.length <= 18;
 }
 
 function isValidIMEI(str) {
@@ -115,7 +145,7 @@ function isValidCNPJ(str) {
   return str.length >= 14;
 }
 
-export function formatCPF(input) {
+function formatCPF(input) {
   let cpf = toDigits(input);
 
   if (cpf.length > 9) {
@@ -128,7 +158,7 @@ export function formatCPF(input) {
   return cpf;
 }
 
-export function formatPlate(input) {
+function formatPlate(input) {
   return onlyLetters(toDigits(input));
 }
 

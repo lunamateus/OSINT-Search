@@ -1,5 +1,5 @@
 import { createDropdownItems } from './createDropdownItems.js';
-import {loadData, createURL, formatCPF, formatUsername, toDigits, toAlphaNum, setValidation, isValid} from './utils.js';
+import {loadData, createURL, getFormatFunction, getValidationFunction, setValidation, isValid} from './utils.js';
 
 const dropdowns = document.querySelectorAll("ul.dropdown-menu");
 const inputTexts = document.querySelectorAll("input[type='text']");
@@ -27,34 +27,6 @@ function addInputListenerAndFormat(elementId, formatFunction, validationFunction
       setValidation(e.target, validationFunction(formattedValue));
     }
   });
-}
-
-function getFormatFunction(field) {
-  switch (field) {
-    case 'cpf':
-      return formatCPF;
-    case 'username':
-      return formatUsername;
-    case 'phone':
-    case 'imei':
-    case 'cnpj':
-      return toDigits;
-    case 'plate':
-      return toAlphaNum;
-    default:
-      return (value) => value;
-  }
-}
-
-function getValidationFunction(field) {
-  switch (field) {
-    case 'cpf':
-      return (value) => value.length < 14 ? null : isValid(field, value);
-    case 'plate':
-      return (value) => value.length < 7 ? null : isValid(field, value);
-    default:
-      return null;
-  }
 }
 
 function createEventListenersOnCheckboxes(field) {
