@@ -29,34 +29,6 @@ function addInputListenerAndFormat(elementId, formatFunction, validationFunction
   });
 }
 
-function createEventListenersOnCheckboxes(field) {
-  const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']`);
-  const selectAllCheckbox = document.getElementById(`todos-${field}-option`);
-
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", (event) => {
-      if (!event.target.checked) {
-        selectAllCheckbox.checked = false;
-      } else {
-        let allChecked = true;
-        for (let i = 0; i < checkboxes.length; i++) {
-          const currentCheckbox = checkboxes[i];
-          if (currentCheckbox !== selectAllCheckbox && !currentCheckbox.checked) {
-            allChecked = false;
-            return;
-          }
-        }
-        selectAllCheckbox.checked = allChecked;
-      }
-    });
-  });
-  selectAllCheckbox.addEventListener("change", (event) => {
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = event.target.checked;
-    });
-  });
-}
-
 function getLinks(field) {
   const checkboxes = document.querySelectorAll(`[data-text=${field}] input[type='checkbox']:checked`);
   let inputValue = document.getElementById(`input-${field}`).value;
@@ -112,10 +84,12 @@ function openConfirmDialog() {
 function initializeEventListeners() {
   inputTexts.forEach(input => {
     const field = input.getAttribute("data-text");
+    const badge = document.getElementById(`badge-${field}`);
     const formatFunction = getFormatFunction(field);
     const validationFunction = getValidationFunction(field);
     input.addEventListener("blur", function() {
       setValidation(this, !this.value.length ? null : isValid(field, this.value));
+      badge.style.display = this.value.length ? "initial" : "none";
     });
     addInputListenerAndFormat(`input-${field}`, formatFunction, validationFunction);
   });
@@ -163,7 +137,8 @@ function initializeDropdowns() {
     const items = filterJsonByAttribute(websiteData, field);
     const sortedItems = sortEntries(items);
     createDropdownItems(dropdown, sortedItems, field);
-    createEventListenersOnCheckboxes(field);
+    //createBadgesOnDropdowns(field);
+    //createEventListenersOnCheckboxes(field);
   });
 }
 
