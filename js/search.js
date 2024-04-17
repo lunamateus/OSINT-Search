@@ -94,7 +94,6 @@ function openConfirmDialog() {
   const sourcesCount = linksToOpen.length
 
   if (sourcesCount > 0) {
-    console.log("search some");
     const confirmText = document.getElementById("confirmText");
     document.getElementById("selectedSourcesCount").innerHTML = sourcesCount;
     if (sourcesCount == 1) {
@@ -104,7 +103,6 @@ function openConfirmDialog() {
     }
     searchModal.show();
   } else {
-    console.log("no search");
     const toast = document.getElementById('nothingToSearchToast');
     const bsToast = new bootstrap.Toast(toast);
     bsToast.show();
@@ -151,7 +149,7 @@ function initializeCountrySelector() {
   countryData.forEach(country => {
     const option = document.createElement("option");
     option.value = `+${country.code}`;
-    option.textContent = `+${country.code}`;
+    option.textContent = `${country.iso} +${country.code}`;
     if (country.iso === "BR") option.selected = true;
     countryCodeSelector.appendChild(option);
   });
