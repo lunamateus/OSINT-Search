@@ -1,0 +1,56 @@
+[
+  {
+    "id": "cpf",
+    "name": "CPF",
+    "placeholder": "11 dígitos ou NNN.NNN.NNN-NN",
+    "feedbackMessage": "CPF inválido. Verifique o número digitado."
+  },
+  {
+    "id": "name",
+    "name": "Nome",
+    "placeholder": "Fulano da Silva",
+    "feedbackMessage": "Digite um nome com pelo menos 3 letras."
+  },
+  {
+    "id": "email",
+    "name": "E-mail",
+    "placeholder": "fulano.silva@exemplo.com.br",
+    "feedbackMessage": "Digite um e-mail válido."
+  },
+  {
+    "id": "username",
+    "name": "Nome de usuário",
+    "placeholder": "fulano.silva",
+    "feedbackMessage": "Digite um nome de usuário com pelo menos 2 letras."
+  },
+  {
+    "id": "phone",
+    "name": "Telefone",
+    "placeholder": "DDD + número",
+    "feedbackMessage": "Verifique se o número digitado tem entre 4 e 18 dígitos."
+  },
+  {
+    "id": "imei",
+    "name": "IMEI",
+    "placeholder": "Digite *#06# no celular para ver o IMEI",
+    "feedbackMessage": "Verifique se o IMEI digitado tem entre 14 e 15 digitos."
+  },
+  {
+    "id": "plate",
+    "name": "Placa Veicular",
+    "placeholder": "NNN-NNNN",
+    "feedbackMessage": "Verifique a placa digitada."
+  },
+  {
+    "id": "cnpj",
+    "name": "CNPJ",
+    "placeholder": "Digite um CNPJ",
+    "feedbackMessage": "CNPJ inválido. Verifique se o número digitado tem pelo menos 14 dígitos."
+  },
+  {
+    "id": "ip",
+    "name": "IP",
+    "placeholder": "Digite um IPv4 ou IPv6",
+    "feedbackMessage": "IP inválido. Verifique o número digitado."
+  }
+]

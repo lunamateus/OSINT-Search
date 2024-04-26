@@ -1,20 +1,4 @@
 {
-  "todos": {
-    "fullName": "Todos",
-    "url": "",
-    "info": [
-      "name",
-      "username",
-      "cpf",
-      "ip",
-      "plate",
-      "phone",
-      "imei",
-      "cnpj",
-      "email"
-    ],
-    "quotes": true
-  },
   "8tracks": {
     "fullName": "8tracks",
     "url": "https://8tracks.com/",
