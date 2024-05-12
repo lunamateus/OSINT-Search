@@ -1,10 +1,17 @@
 import './App.css'
+import { useState } from 'react';
 import { Navbar } from './components/Navbar'
 import { InputField } from './components/InputField'
 import { Footer } from './components/Footer'
 import inputFieldsData from './data/inputFieldsData.json';
+import sourcesData from './data/sourcesData.json';
 
 function App() {
+  const [inputValues, setInputValues] = useState({}); // Object to store input values
+
+  const handleSearchClick = () => {
+    console.log('Input values:', inputValues); // TO DO
+  };
 
   return (
     <>
@@ -23,10 +30,12 @@ function App() {
                 name={field.name}
                 placeholder={field.placeholder}
                 feedbackMessage={field.feedbackMessage}
+                onChange={(value) => setInputValues({ ...inputValues, [field.id]: value })}
+                data={sourcesData}
               />
             ))}
             <div className="mt-3 text-center">
-              <button className="btn btn-dark" id="search-button">Pesquisar</button>
+              <button className="btn btn-dark" id="search-button" onClick={handleSearchClick}>Pesquisar</button>
             </div>
           </div>
         </div>

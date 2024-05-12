@@ -1,99 +1,70 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
-import { Button, Collapse, FormControl, InputGroup, Offcanvas } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
-import data from '../data/sourcesData.json';
+import Input from './Input'; // Import the Input component
+import CheckboxGroup from './CheckboxGroup'; // Import the CheckboxGroup component
+import OffcanvasFilters from './OffcanvasFilters'; // Import the OffcanvasFilters component
 
-function FilterIcon() {
-  return (
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    fill="currentColor"
-    className="bi bi-filter"
-    viewBox="0 0 16 16"
-  >
-    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-  </svg>
-  )
-}
-
-export function InputField({ id, name, placeholder, feedbackMessage }) {
-  const items = Object.keys(data).filter((source) => data[source].info.includes(id));
-
+export function InputField({ id, name, placeholder, feedbackMessage, data }) {
+  const [inputText, setInputText] = useState('');
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [checkedItems, setCheckedItems] = useState(() => {
-    const initialCheckedState = { Todos: true };
-    items.forEach((item) => {
-      initialCheckedState[item] = true;
-    });
+    const initialCheckedState = data ? Object.keys(data).reduce((acc, item) => ({ ...acc, [item]: true }), {}) : {}; // Initialize based on data
     return initialCheckedState;
   });
+
+  const getCheckedItems = data ? Object.keys(data).filter((source) => data[source].info.includes(id)) : []; // Handle potential absence of data
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleCloseOffcanvas = () => setShowOffcanvas(false);
+  const handleShowOffcanvas = () => setShowOffcanvas(true);
+
+  const handleToggleTodosCheckbox = () => {
+    const allChecked = Object.values(checkedItems).every(Boolean);
+    const updatedCheckedItems = Object.assign({}, ...Object.keys(checkedItems).map((item) => ({ [item]: !allChecked }))); // Toggle all checkboxes
+    setCheckedItems(updatedCheckedItems);
+  };
 
   const handleCheckboxChange = (event, item) => {
     const updatedCheckedItems = { ...checkedItems, [item]: event.target.checked };
     setCheckedItems(updatedCheckedItems);
   };
 
-  const handleToggleTodosCheckbox = () => {
-    const allChecked = Object.values(checkedItems).every(Boolean);
-    const updatedCheckedItems = { ...checkedItems };
-    Object.keys(updatedCheckedItems).forEach((item) => {
-      updatedCheckedItems[item] = !allChecked;
-    });
-    setCheckedItems(updatedCheckedItems);
-  };
-
-  const allChecked = Object.values(checkedItems).every(Boolean);
-
-  const [showOffcanvas, setShowOffcanvas] = useState(false);
-
-  const handleCloseOffcanvas = () => setShowOffcanvas(false);
-  const handleShowOffcanvas = () => setShowOffcanvas(true);
-
   return (
     <>
-      {name && (
-        <label className="mt-3" htmlFor={`input-${id}`}>{name}</label>
-      )}
-
-      <InputGroup className="has-validation">
-        <FormControl
-          type="text"
-          id={`input-${id}`}
-          name={`input-${id}`}
-          data-text={id}
-          placeholder={placeholder}
-          aria-describedby={`validation${id}Feedback`}
-          autoComplete="on"
-        />
-        <Button variant="outline-dark" onClick={handleShowOffcanvas}>
-          <FilterIcon></FilterIcon>
-        </Button>
-        <Collapse in={showOffcanvas}>
-          <div id={`validation${id}Feedback`} className="invalid-feedback">
-            {feedbackMessage}
-          </div>
-        </Collapse>
-      </InputGroup>
-
-      <Offcanvas show={showOffcanvas} onHide={handleCloseOffcanvas} placement="end">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title><FilterIcon></FilterIcon> Filtros para {name}</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <div>
-            <strong>
-              <Form.Check checked={allChecked} onChange={handleToggleTodosCheckbox} label=" Todos"></Form.Check>
-            </strong>
-          </div>
-          {items.map((item, index) => (
-            <div key={index}>
-              <Form.Check checked={checkedItems[item]} onChange={(e) => handleCheckboxChange(e, item)} label={data[item].fullName}></Form.Check>
+      {name && <label className="mt-3" htmlFor={`input-${id}`}>{name}</label>}
+      <Input
+        id={`input-${id}`}
+        name={`input-${id}`}
+        placeholder={placeholder}
+        value={inputText}
+        onChange={handleInputChange}
+        onShowOffcanvas={handleShowOffcanvas}
+      />
+      <OffcanvasFilters show={showOffcanvas} onHide={handleCloseOffcanvas} title={`Filtros para ${name}`}>
+        {data && (
+          <>
+            <CheckboxGroup allChecked={getCheckedItems.length === data.length} onToggleAll={handleToggleTodosCheckbox} data={data} />
+            <div className="d-flex flex-wrap"> {/* Wrap checkboxes in a flex container */}
+              {getCheckedItems.map((item, index) => (
+                <CheckboxGroup
+                  key={index}
+                  checked={getCheckedItems.includes(item)}
+                  data={data[item]}
+                  onChange={handleCheckboxChange}
+                  label={`Todo: ${data[item].fullName}`}
+                  className="me-2 mb-2" // Add margin for spacing
+                />
+              ))}
             </div>
-          ))}
-        </Offcanvas.Body>
-      </Offcanvas>
+          </>
+        )}
+      </OffcanvasFilters>
+      <div id={`validation${id}Feedback`} className="invalid-feedback">
+        {feedbackMessage}
+      </div>
     </>
   );
 }
@@ -103,6 +74,7 @@ InputField.propTypes = {
   name: PropTypes.string,
   feedbackMessage: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  data: PropTypes.object, // Allow optional data prop
 };
 
 export default InputField;
